@@ -13,6 +13,10 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const head = sessionStorage.getItem('token');
+    if (head != null) {
+      request = request.clone({setHeaders: {Authorization : head}});
+    }
     return next.handle(request);
   }
 }
