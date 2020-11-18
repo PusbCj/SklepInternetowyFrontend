@@ -16,13 +16,13 @@ export class MenuComponent implements OnInit {
   }
 
 
-  logOut() {
+  logOut(): void{
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
     this.messageService.add({ severity: 'info', summary: 'Informacja', detail: 'Wylogowano'});
-    this.router.navigate(['/start']);
+    this.router.navigate(['/']);
   }
 
   isNotLogged(): boolean {
