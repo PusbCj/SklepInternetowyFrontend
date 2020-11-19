@@ -17,6 +17,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
+import { ActivateComponent } from './activate/activate.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ContactComponent } from './contact/contact.component';
     StartComponent,
     PageNotFoundComponent,
     FooterComponent,
-    ContactComponent
+    ContactComponent,
+    ActivateComponent
   ],
   imports: [
     BrowserModule,
