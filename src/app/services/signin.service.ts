@@ -24,4 +24,9 @@ export class SigninService {
       })
     );
   }
+
+
+  activate(user: string, key: string): Observable<any>{
+      return this.http.get(SERVER_API_URL + 'api/v1/signup/' + '?key=' + key + '&username=' + user);
+     }
 }

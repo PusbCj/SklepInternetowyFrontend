@@ -15,6 +15,9 @@ import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
+import { ContactComponent } from './contact/contact.component';
+import { ActivateComponent } from './activate/activate.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import {FormsModule} from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     StartComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FooterComponent,
+    ContactComponent,
+    ActivateComponent
   ],
   imports: [
     BrowserModule,

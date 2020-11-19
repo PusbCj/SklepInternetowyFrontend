@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+body
+{ font: normal .80em 'trebuchet ms', arial, sans-serif;
+  color: #5D5D5D;
+background-color: #eee !important;}
