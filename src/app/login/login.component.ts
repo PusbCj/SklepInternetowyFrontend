@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('user', loginForm.value.username);
         this.status = 'sukces';
         this.messageService.add({ severity: 'success', summary: 'Sukces', detail: 'Logowanie przebiegło pomyślnie'});
-        this.router.navigate(['/start']);
+        window.history.back();
+        // this.router.navigate(['/start']);
       }, () => {
         this.status = 'Błedne hasło lub login';
         this.messageService.add({ severity: 'error', summary: 'Blad', detail: 'Nie udało sie zalogować'});

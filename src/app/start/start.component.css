@@ -1,0 +1,30 @@
+.cat{
+  border: 4px solid #E5E5DB;
+  background: white;
+  padding: 2px;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: 2px;
+  height: 300px;
+}
+.photo{
+  overflow: hidden;
+  height: 200px;
+}
+.c  img{
+  transition: all 0.5s ease-in-out;
+
+}
+.c:hover img{
+  transform: scale(1.15);
+}
+
+.slid{
+  width: 100%;
+  min-height: 100px;
+  margin-top: 20px;
+  background: white;
+  border: 1px solid #E5E5DB;
+}
