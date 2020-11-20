@@ -8,9 +8,9 @@
 
       <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="Potwierdź" /></p>
     </div>
-    <li><a href="#">Nie pamiętasz hasła?</a></li>
+    <li><a routerLink='/forgotPassword'>Nie pamiętasz hasła?</a></li>
 
-    <li><a href="#">Nie masz jeszcze konta?</a></li>
+    <li><a routerLink='/register'>Nie masz jeszcze konta?</a></li>
 
   </form>
   <div *ngIf="status.length>0" class="alert alert-danger">{{status}}</div>

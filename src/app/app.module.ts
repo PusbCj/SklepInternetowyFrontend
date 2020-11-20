@@ -19,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { ActivateComponent } from './activate/activate.component';
 import { CategoryComponent } from './category/category.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CategoryComponent } from './category/category.component';
     FooterComponent,
     ContactComponent,
     ActivateComponent,
-    CategoryComponent
+    CategoryComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
