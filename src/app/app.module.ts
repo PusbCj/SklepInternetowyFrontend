@@ -18,6 +18,7 @@ import {FormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { ActivateComponent } from './activate/activate.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ActivateComponent } from './activate/activate.component';
     PageNotFoundComponent,
     FooterComponent,
     ContactComponent,
-    ActivateComponent
+    ActivateComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

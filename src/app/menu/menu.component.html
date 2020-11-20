@@ -17,10 +17,18 @@
           Kategorie
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" routerLink='category'>Gry planszowe</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" routerLink='category'>Klocki</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"routerLink='category'>Zabawki edukacyjne</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"routerLink='category'>Maskotki i figurki</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"routerLink='category'>Lalki i akcesoria</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"routerLink='category'>Samochody i pojazdy</a>
+          <div class="dropdown-divider"></div>
         </div>
       </li>
       <span *ngIf="!isNotLogged()">

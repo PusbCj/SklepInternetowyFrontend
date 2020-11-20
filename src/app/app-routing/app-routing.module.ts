@@ -7,6 +7,7 @@ import {StartComponent} from '../start/start.component';
 import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
 import {ContactComponent} from '../contact/contact.component';
 import {ActivateComponent} from '../activate/activate.component';
+import {CategoryComponent} from '../category/category.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path : 'register', component: RegisterComponent},
   {path : 'contact', component: ContactComponent},
   {path : 'activate', component: ActivateComponent},
+  {path : 'category', component: CategoryComponent},
   {path: '', redirectTo: 'start', pathMatch: 'full' },
   {path: '**', component: PageNotFoundComponent}
 ];
