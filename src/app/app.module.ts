@@ -20,6 +20,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ActivateComponent } from './activate/activate.component';
 import { CategoryComponent } from './category/category.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     ContactComponent,
     ActivateComponent,
     CategoryComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

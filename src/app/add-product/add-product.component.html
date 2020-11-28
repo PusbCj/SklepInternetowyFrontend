@@ -1,0 +1,33 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-3 formcu" >
+      <h1>Kreator nowego produktu</h1><br>
+      <br>
+      <p>Nazwa</p>
+      <input type="text" class="form-control" [(ngModel)]="product.name"><br>
+      <p>Kategoria</p>
+      <select class="form-control" [(ngModel)]="idCategory">
+        <ng-container *ngFor="let cat of categories">
+        <option value="{{cat.id}}">{{cat.name}}</option>
+
+        </ng-container>
+      </select>
+      <p>Opis</p>
+      <textarea class="form-control" rows="10" [(ngModel)]="product.description"></textarea><br>
+      <p>Zdjęcie</p>
+      <input type="file" class="form-control-file" (change)="onFileSelected($event)"><br>
+
+      <p>Cena</p>
+      <input type="text" [(ngModel)]="product.price"><br><br>
+      <button class="btn btn-success" (click)="saveProduct()">addProduct</button>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+

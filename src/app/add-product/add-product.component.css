@@ -1,0 +1,10 @@
+.formcu{
+  background: white;
+  border:  1px solid white;
+  border-radius: 2px;
+  -webkit-box-shadow: 5px 5px 15px 11px #919191;
+  box-shadow: 5px 5px 15px 11px #919191;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 10px 20px 40px;
+}
