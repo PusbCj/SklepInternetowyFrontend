@@ -1,21 +1,44 @@
-<div id="sidebar_container">
-  <h1>Zaloguj się</h1>
-  <p>Podaj swoją nazwę użytkownika i hasło:</p>
+<div class="container" style="margin-top: 8em">
   <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)" ngForm>
-    <div class="form_settings">
-      <p><span>Nazwa użytkownika:</span><input class="contact" type="text" id="loginInput"  name="username" ngModel value="" /></p>
-      <p><span>Hasło:</span><input class="contact" type="password" value="" id="passwordInput" name="password" ngModel/></p>
+  <div class="row"></div>
+  <div class="col-md-6 offset-3">
+    <div class="zal">
+      <h1>Zaloguj się</h1>
+      <h5>Podaj swoją nazwę użytkownika i hasło:</h5>
 
-      <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="Potwierdź" /></p>
+      <div class="row">
+        <div class="col-sm-6"><div>
+          <h4>Nazwa użytkownika:</h4>
+          <h4>Hasło:</h4>
+        </div></div>
+        <div class="col-sm-6"><div>
+          <input  type="text"  id="loginInput"  name="username" ngModel value="">
+          <input type="password" value="" id="passwordInput" name="password" ngModel>
+        </div></div>
+
+      </div>
+      <div class="row">
+        <div class="col-12 "><div>
+          <div *ngIf="status.length>0" class="alert alert-danger">{{status}}</div>
+          <button type="submit" class=" float-right btn btn-success btn-lg btn-block pot">Potwierdź</button>
+          <div class="napi">
+          <li><a routerLink='/forgotPassword'>Nie pamiętasz hasła?</a></li>
+
+          <li><a routerLink='/register'>Nie masz jeszcze konta?</a></li>
+          </div>
+        </div>
+        </div>
+      </div>
+
     </div>
-    <li><a routerLink='/forgotPassword'>Nie pamiętasz hasła?</a></li>
 
-    <li><a routerLink='/register'>Nie masz jeszcze konta?</a></li>
+  </div>
 
-  </form>
-  <div *ngIf="status.length>0" class="alert alert-danger">{{status}}</div>
+</form>
 
 </div>
+
+
 
 
 
