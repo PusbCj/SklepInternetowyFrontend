@@ -21,6 +21,7 @@ import { ActivateComponent } from './activate/activate.component';
 import { CategoryComponent } from './category/category.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { ProductViewComponent } from './product-view/product-view.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     ActivateComponent,
     CategoryComponent,
     ForgotPasswordComponent,
-    AddProductComponent
+    AddProductComponent,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,

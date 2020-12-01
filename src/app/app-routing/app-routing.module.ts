@@ -10,6 +10,7 @@ import {ActivateComponent} from '../activate/activate.component';
 import {CategoryComponent} from '../category/category.component';
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component';
 import {AddProductComponent} from '../add-product/add-product.component';
+import {ProductViewComponent} from '../product-view/product-view.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path : 'contact', component: ContactComponent},
   {path : 'activate', component: ActivateComponent},
   {path : 'category', component: CategoryComponent},
+  {path : 'product/:id', component: ProductViewComponent},
   {path : 'addproduct', component: AddProductComponent},
   {path : 'forgotPassword', component: ForgotPasswordComponent},
   {path: '', redirectTo: 'start', pathMatch: 'full' },
