@@ -6,6 +6,10 @@
       <br>
       <p>Nazwa</p>
       <input type="text" class="form-control" [(ngModel)]="product.name"><br>
+      <p>Marka</p>
+      <input type="text" class="form-control" [(ngModel)]="product.brand"><br>
+      <p>Wiek od</p>
+      <input type="text" class="form-control" [(ngModel)]="product.age"><br>
       <p>Kategoria</p>
       <select class="form-control" [(ngModel)]="idCategory">
         <ng-container *ngFor="let cat of categories">
@@ -15,7 +19,11 @@
       </select>
       <p>Opis</p>
       <textarea class="form-control" rows="10" [(ngModel)]="product.description"></textarea><br>
-      <p>Zdjęcie</p>
+      <p>Zdjęcia</p>
+      <ng-container *ngFor="let path of pathFiles;let i = index">
+
+        <img src="{{path.url}}">
+      </ng-container>
       <input type="file" class="form-control-file" (change)="onFileSelected($event)"><br>
 
       <p>Cena</p>

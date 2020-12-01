@@ -4,6 +4,7 @@ import {Product} from '../models/Product.model';
 import {CategoryService} from '../services/category.service';
 import {Category} from '../models/Category.model';
 import {MessageService} from 'primeng/api';
+import {PhotoUrl} from '../models/PhotoUrl.models';
 
 @Component({
   selector: 'app-add-product',
@@ -13,6 +14,7 @@ import {MessageService} from 'primeng/api';
 export class AddProductComponent implements OnInit {
   selectedFile = null;
   pathFile = '';
+  pathFiles: Array<PhotoUrl> = new Array();
   product: Product;
   categories: Array<Category>;
   idCategory = 1;
@@ -21,6 +23,7 @@ export class AddProductComponent implements OnInit {
               , private messageService: MessageService) {
     this.product = new Product();
     this.categories = new Array<Category>();
+    this.pathFiles = new Array();
   }
 
   ngOnInit(): void {
@@ -31,14 +34,19 @@ export class AddProductComponent implements OnInit {
 
   onFileSelected(event): void {
     this.selectedFile = event.target.files[0];
-    this.productService.addFile(this.selectedFile).subscribe(res =>
-    this.pathFile = res, error => {
+    this.productService.addFile(this.selectedFile).subscribe(res => {
+    this.pathFile = res;
+    const photo = new PhotoUrl();
+    photo.url = res;
+    this.pathFiles.push(photo);
+    console.log(this.pathFiles);
+    }, error => {
       console.log(error);
     });
   }
 
   saveProduct(): void {
-    this.product.photoUrl = this.pathFile;
+    this.product.photoUrl = this.pathFiles;
 
     // tslint:disable-next-line:triple-equals
     this.product.category = this.categories.find(x => x.id == this.idCategory);
