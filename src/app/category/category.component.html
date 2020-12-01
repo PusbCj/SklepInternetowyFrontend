@@ -1,1 +1,123 @@
-<p>category works!</p>
+
+<div class="container" style="padding-top: 20px;padding-bottom: 20px;">
+  <div class="row">
+    <div class="col-sm-3"><div class="filtry">
+      <div class="divider">
+      <button type="button" class="btn btn-custom btn-lg btn-block">Ukryj filtry</button>
+      <button type="button" class="btn btn-custom btn-lg btn-block">Wyczyść filtry</button>
+      </div>
+      <div class="divider">
+      <br>
+      <h5>Cena: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>
+      <p-slider [(ngModel)]="rangeValues" [min]="0" [max]="500" [range]="true"></p-slider>
+      </div>
+
+      <div class="divider">
+      <p>Marka:</p>
+        <input type="text" class="form-control " placeholder="Szukaj">
+        <p>Wiek:</p>
+        <input type="text" class="form-control" placeholder="Szukaj">
+      </div>
+
+
+      <div class="divider">
+      <button type="button" class="btn btn-custom btn-lg btn-block">Szukaj</button>
+      </div>
+    </div></div>
+    <div class="col-sm-9"><div class="content">
+      <div class="row">
+        <div class="col-sm-12"><div>
+          <div class="row">
+            <div class="col-sm-4">
+              <h6>Sortuj:</h6><select style="font-family: Verdana; font-style: italic">
+              <option>Cena- od najniższej</option>
+              <option>Cena- od najwyzszej</option>
+            </select>
+            </div>
+            <div class="col-sm-8">
+          <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3"></p-paginator></div></div>
+        </div>
+        </div>
+          <div class="col-sm-12"><div>
+          <div class="row">
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img src="http://195.80.229.73:443/photo/IMG_20200823_205343.jpg"></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+             <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+               <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+             </h5></div>
+            </div>
+            </div>
+
+
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+              <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+                <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+              </h5></div>
+            </div>
+            </div>
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+              <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+                <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+              </h5></div>
+            </div>
+            </div>
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+              <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+                <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+              </h5></div>
+            </div>
+            </div>
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+              <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+                <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+              </h5></div>
+            </div>
+            </div>
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+              <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+                <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+              </h5></div>
+            </div>
+            </div>
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+              <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+                <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+              </h5></div>
+            </div>
+            </div>
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+              <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+                <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+              </h5></div>
+            </div>
+            </div>
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+              <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+                <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+              </h5></div>
+            </div>
+            </div>
+            <div class="col-sm-3"><div class="product">
+              <div class="zdjecie"><img></div><div style="padding: 10px 10px 0"><h6>Nazwa produktu</h6>
+              <h5><span style="text-decoration: line-through;font-size: medium">199,99zł</span>
+                <span style="color: green; font-size: large"> 143,99 ZŁ </span>
+              </h5></div>
+            </div>
+            </div>
+
+          </div>
+        </div></div>
+      </div>
+
+    </div></div>
+
+  </div>
+</div>

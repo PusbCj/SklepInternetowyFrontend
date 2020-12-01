@@ -1,0 +1,44 @@
+.product{
+  border: 1px solid #dddddd;
+  margin-top: 10px;
+}
+
+
+.zdjecie img{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.zdjecie{
+  border: 3px solid #dddddd;
+  position:relative;
+  overflow:hidden;
+  padding-bottom:90%;
+}
+
+.filtry button{
+
+  font-size: medium;
+}
+
+.btn-custom{
+  background: #ecc34a
+}
+
+.divider{
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+
+.divider input{
+  background: #eeeeee;
+  margin-bottom: 10px;
+}
+.divider p{
+  margin-bottom: 0;
+  font-family: "dosis", sans-serif;
+}

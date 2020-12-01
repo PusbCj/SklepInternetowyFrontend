@@ -22,6 +22,8 @@ import { CategoryComponent } from './category/category.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductViewComponent } from './product-view/product-view.component';
+import {PaginatorModule} from 'primeng/paginator';
+import {SliderModule} from 'primeng/slider';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { ProductViewComponent } from './product-view/product-view.component';
     RouterModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PaginatorModule,
+    SliderModule
   ],
   providers: [MessageService,
     { provide: LocationStrategy, useClass: PathLocationStrategy}],

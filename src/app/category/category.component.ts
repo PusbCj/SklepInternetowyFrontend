@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
+  rangeValues: number[] = [0, 500];
   constructor() { }
 
   ngOnInit(): void {
