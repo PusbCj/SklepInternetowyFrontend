@@ -5,7 +5,41 @@
   object-fit: cover;
 
 }
+.photo {
+  transition: all 0.5s ease-in-out;
+}
+.photo:hover {
+  -webkit-box-shadow: 3px 3px 27px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow:    3px 3px 27px 0px rgba(0, 0, 0, 1);
+  box-shadow:         3px 3px 27px 0px rgba(0, 0, 0, 1);
+}
+.photobig {
+  transition: all 0.5s ease-in-out;
+}
+.photobig:hover {
+  -webkit-box-shadow: 3px 3px 27px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow:    3px 3px 27px 0px rgba(0, 0, 0, 1);
+  box-shadow:         3px 3px 27px 0px rgba(0, 0, 0, 1);
+}
 
+.photo img{
+  transition: all 0.5s ease-in-out;
+}
+.photo:hover img{
+  transform: scale(1.15);
+  -webkit-box-shadow: 3px 3px 27px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow:    3px 3px 27px 0px rgba(0, 0, 0, 1);
+  box-shadow:         3px 3px 27px 0px rgba(0, 0, 0, 1);
+}
+.photobig img{
+  transition: all 0.5s ease-in-out;
+}
+.photobig:hover img{
+  transform: scale(1.15);
+  -webkit-box-shadow: 3px 3px 27px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow:    3px 3px 27px 0px rgba(0, 0, 0, 1);
+  box-shadow:         3px 3px 27px 0px rgba(0, 0, 0, 1);
+}
 .zdjecie{
   border: 3px solid #dddddd;
   position:relative;

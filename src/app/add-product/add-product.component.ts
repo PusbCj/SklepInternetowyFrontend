@@ -53,6 +53,7 @@ export class AddProductComponent implements OnInit {
     this.productService.addProduct(this.product).subscribe(res => {
       this.messageService.add({ severity: 'success', summary: 'Sukces', detail: 'Podano produkt'});
       this.product = new Product();
+      this.pathFiles = new Array<PhotoUrl>();
     }, error => {
       this.messageService.add({ severity: 'error', summary: 'bład', detail: 'Nie udało się dodać błedu'});
     });
