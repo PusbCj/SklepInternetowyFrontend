@@ -19,7 +19,7 @@ const routes: Routes = [
   {path : 'register', component: RegisterComponent},
   {path : 'contact', component: ContactComponent},
   {path : 'activate', component: ActivateComponent},
-  {path : 'category', component: CategoryComponent},
+  {path : 'category/:id', component: CategoryComponent},
   {path : 'product/:id', component: ProductViewComponent},
   {path : 'addproduct', component: AddProductComponent},
   {path : 'forgotPassword', component: ForgotPasswordComponent},

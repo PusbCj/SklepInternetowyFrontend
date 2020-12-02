@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -8,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class CategoryComponent implements OnInit {
 
   rangeValues: number[] = [0, 500];
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
+  catID = '';
 
   ngOnInit(): void {
+    this.catID = this.route.snapshot.paramMap.get('id');
   }
 
 }
