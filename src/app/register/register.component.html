@@ -27,7 +27,7 @@
             <input  type="text"  id="3"  name="firstName" ngModel value="">
             <input  type="text"  id="4"  name="lastName" ngModel value="">
             <input  type="text"  id="5"  name="street" ngModel value="">
-            <input  type="text"  id="6"  name="houseNumber" ngModel value="">
+            <input  type="number"  id="6"  name="houseNumber" ngModel value="">
             <input  type="text"  id="7"  name="nameAddress" ngModel value="">
             <input  type="text"  id="8"  name="postCode" ngModel value="">
           </div></div>
@@ -35,8 +35,9 @@
         </div>
         <div class="row">
           <div class="col-12 "><div>
-
-            <button type="submit" class=" float-right btn btn-success btn-lg btn-block pot">Zarejstruj</button>
+            <div *ngIf="regForm.value.password != regForm.value.passwordRepeat" class="alert alert-danger"> hasła nie są jednakowe </div>
+            <div *ngIf="status.length>0" class="alert alert-danger">{{status}}</div>
+            <button *ngIf="regForm.value.password == regForm.value.passwordRepeat && regForm.value.username && regForm.value.password && regForm.value.email" type="submit" class=" float-right btn btn-success btn-lg btn-block pot">Zarejstruj</button>
 
           </div>
           </div>
