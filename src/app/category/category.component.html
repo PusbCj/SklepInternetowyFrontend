@@ -1,6 +1,6 @@
 
 <div class="container" style="padding-top: 20px;padding-bottom: 20px;">
-
+<h1 style="text-align: center; padding-bottom: 10px">{{titleCategory}}</h1>
 
   <div class="row">
     <div class="col-sm-3"><div class="filtry">
@@ -32,7 +32,7 @@
             <div class="col-sm-4">
               <h6>Sortuj:</h6><select style="font-family: Verdana; font-style: italic" [(ngModel)]="desc">
               <option value=false>Cena- od najniższej</option>
-              <option value=true>Cena- od najwyzszej</option>
+              <option value=true>Cena- od najwyższej</option>
             </select>
             </div>
             <div class="col-sm-8">
@@ -42,7 +42,7 @@
           <div class="col-sm-12"><div>
           <div class="row">
             <ng-container *ngFor="let product of listProduct">
-            <div class="col-sm-3"><div class="product" routerLink="/product/{{product.id}}">
+            <div class="col-sm-4 col-lg-4 col-xl-3" ><div class="product" routerLink="/product/{{product.id}}">
               <div class="zdjecie"><img src="{{product.photoUrl[0].url}}"></div><div style="padding: 10px 10px 0"><h6>{{product.name}}</h6>
              <h5><span style="text-decoration: line-through;font-size: medium">{{product.price*1.4}}zł</span>
                <span style="color: green; font-size: large"> {{product.price}} ZŁ </span>
@@ -61,3 +61,5 @@
 
   </div>
 </div>
+    </div>
+  </div></div>

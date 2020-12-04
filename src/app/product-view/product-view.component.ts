@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductServiceService} from '../services/product-service.service';
 import {Product} from '../models/Product.model';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-product-view',
@@ -12,7 +13,8 @@ export class ProductViewComponent implements OnInit {
 product: Product;
 prodID = '';
 
-  constructor(private route: ActivatedRoute, private productService: ProductServiceService, private router: Router) {
+  constructor(private route: ActivatedRoute, private productService: ProductServiceService,
+              private router: Router, private location: Location) {
     this.product = new Product();
   }
   ngOnInit(): void {
@@ -26,5 +28,9 @@ prodID = '';
     const temp = this.product.photoUrl[0];
     this.product.photoUrl[0] = this.product.photoUrl[id];
     this.product.photoUrl[id] = temp;
+  }
+
+  undo(): void{
+    this.location.back();
   }
 }

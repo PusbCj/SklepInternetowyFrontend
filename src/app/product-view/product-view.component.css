@@ -5,18 +5,18 @@
   object-fit: cover;
 
 }
-.photo {
+.zdjeciebig {
   transition: all 0.5s ease-in-out;
 }
-.photo:hover {
+.zdjeciebig:hover {
   -webkit-box-shadow: 3px 3px 27px 0px rgba(0, 0, 0, 1);
   -moz-box-shadow:    3px 3px 27px 0px rgba(0, 0, 0, 1);
   box-shadow:         3px 3px 27px 0px rgba(0, 0, 0, 1);
 }
-.photobig {
+.zdjecie {
   transition: all 0.5s ease-in-out;
 }
-.photobig:hover {
+.zdjecie:hover {
   -webkit-box-shadow: 3px 3px 27px 0px rgba(0, 0, 0, 1);
   -moz-box-shadow:    3px 3px 27px 0px rgba(0, 0, 0, 1);
   box-shadow:         3px 3px 27px 0px rgba(0, 0, 0, 1);
@@ -49,10 +49,10 @@
 
 .photo{
 
-  padding-top: 10px;
+  margin-top: 10px;
 }
 .photobig{
-  padding-top: 10px;
+  margin-top: 10px;
 }
 .zdjeciebig img{
   position:absolute;

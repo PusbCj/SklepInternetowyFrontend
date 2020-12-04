@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Product} from '../models/Product.model';
 import {ProductServiceService} from '../services/product-service.service';
 import {filter} from 'rxjs/operators';
+import {CategoryService} from '../services/category.service';
 
 @Component({
   selector: 'app-category',
@@ -18,8 +19,9 @@ export class CategoryComponent implements OnInit {
   rangeValues: number[] = [0, 500];
   brand = '';
   totalElements = 0;
+  titleCategory = '';
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
-              private router: Router) {
+              private router: Router, private categoryService: CategoryService) {
     this.listProduct = new Array<Product>();
   }
   catID = '';
@@ -28,13 +30,25 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.catID = this.route.snapshot.paramMap.get('id');
     this.getAllProducts();
+    this.getCategory();
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.catID = this.route.snapshot.paramMap.get('id');
+        this.getCategory();
         this.getAllProducts();
       });
+  }
+
+  getCategory(): void{
+
+    this.categoryService.getById(Number(this.catID)).subscribe(res =>{
+      this.titleCategory = res.name;
+      console.log(res);
+    }, error => {
+      this.titleCategory = '';
+    });
   }
 
    getAllProducts(): void {
