@@ -23,4 +23,12 @@ export class ProductServiceService {
   getProduct(id): Observable<any>{
     return this.http.get(SERVER_API_URL + 'api/v1/product/id/' + id);
   }
+
+  getAllProductsByParameters(category, age, desc, pageNumber, pageSize, priceHigh, priceLow, brand): Observable<any>{
+    return this.http.get(SERVER_API_URL + 'api/v1/product/category/' +
+     category + '?age=' + age + '&brand=' + brand + '&desc=' + desc +
+      '&page=' + pageNumber + '&size=' + pageSize +
+      '&priceHigh=' + priceHigh + '&priceLow=' + priceLow
+       + '&sort=price,desc');
+  }
 }

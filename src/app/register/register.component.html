@@ -37,8 +37,13 @@
           <div class="col-12 "><div>
             <div *ngIf="regForm.value.password != regForm.value.passwordRepeat" class="alert alert-danger"> hasła nie są jednakowe </div>
             <div *ngIf="status.length>0" class="alert alert-danger">{{status}}</div>
-            <button *ngIf="regForm.value.password == regForm.value.passwordRepeat && regForm.value.username && regForm.value.password && regForm.value.email" type="submit" class=" float-right btn btn-success btn-lg btn-block pot">Zarejstruj</button>
-
+            <button *ngIf="regForm.value.password == regForm.value.passwordRepeat &&
+             regForm.value.username && regForm.value.password &&
+              regForm.value.email; else disabled" type="submit" class=" float-right btn btn-success btn-lg btn-block pot">
+              Zarejstruj</button>
+            <ng-template #disabled>
+            <button  type="button" class=" float-right btn btn-success btn-lg btn-block pot" disabled>Zarejstruj</button>
+            </ng-template>
           </div>
           </div>
         </div>
