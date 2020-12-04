@@ -5,9 +5,9 @@
       </div> </div>
     <div class="col-sm-2">
       <div class="row">
-        <div class="col-sm-12"><div class="photo"><div class="zdjecie"><img  src="{{product.photoUrl[1].url}}">miniatura</div></div></div>
-        <div class="col-sm-12"><div class="photo"><div class="zdjecie"><img src="{{product.photoUrl[2].url}}">miniatura</div></div></div>
-        <div class="col-sm-12"><div class="photo"><div class="zdjecie"><img src="{{product.photoUrl[3].url}}">miniatura</div></div></div>
+        <div class="col-sm-12"><div class="photo" (click)="changePhoto(1)"><div class="zdjecie"><img  src="{{product.photoUrl[1].url}}">miniatura</div></div></div>
+        <div class="col-sm-12"><div class="photo" (click)="changePhoto(2)"><div class="zdjecie" ><img src="{{product.photoUrl[2].url}}">miniatura</div></div></div>
+        <div class="col-sm-12"><div class="photo" (click)="changePhoto(3)"><div class="zdjecie"><img src="{{product.photoUrl[3].url}}">miniatura</div></div></div>
       </div>
 
     </div>

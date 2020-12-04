@@ -21,4 +21,10 @@ prodID = '';
       this.product = res;
     }, res => this.router.navigate(['/pagenotfound']));
   }
+
+  changePhoto( id: number): void {
+    const temp = this.product.photoUrl[0];
+    this.product.photoUrl[0] = this.product.photoUrl[id];
+    this.product.photoUrl[id] = temp;
+  }
 }
