@@ -26,6 +26,7 @@ import {PaginatorModule} from 'primeng/paginator';
 import {SliderModule} from 'primeng/slider';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { CartComponent } from './cart/cart.component';
+import {Galleria, GalleriaContent, GalleriaModule} from 'primeng/galleria';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { CartComponent } from './cart/cart.component';
     FormsModule,
     HttpClientModule,
     PaginatorModule,
-    SliderModule
+    SliderModule,
+    GalleriaModule
   ],
   providers: [MessageService,
     { provide: LocationStrategy, useClass: PathLocationStrategy}],
