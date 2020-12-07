@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ProductServiceService} from '../services/product-service.service';
 import {Product} from '../models/Product.model';
 import {Location} from '@angular/common';
+import {PhotoUrl} from '../models/PhotoUrl.models';
+
 
 @Component({
   selector: 'app-product-view',
@@ -12,22 +14,23 @@ import {Location} from '@angular/common';
 export class ProductViewComponent implements OnInit {
 product: Product;
 prodID = '';
+productUrlBig: PhotoUrl;
 
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
               private router: Router, private location: Location) {
     this.product = new Product();
   }
   ngOnInit(): void {
+
     this.prodID = this.route.snapshot.paramMap.get('id');
     this.productService.getProduct(this.prodID).subscribe(res => {
       this.product = res;
+      this.productUrlBig = res.photoUrl[0];
     }, res => this.router.navigate(['/pagenotfound']));
   }
 
   changePhoto( id: number): void {
-    const temp = this.product.photoUrl[0];
-    this.product.photoUrl[0] = this.product.photoUrl[id];
-    this.product.photoUrl[id] = temp;
+    this.productUrlBig = this.product.photoUrl[id];
   }
 
   undo(): void{

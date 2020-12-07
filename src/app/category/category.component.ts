@@ -5,6 +5,7 @@ import {ProductServiceService} from '../services/product-service.service';
 import {filter} from 'rxjs/operators';
 import {CategoryService} from '../services/category.service';
 
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -31,6 +32,8 @@ export class CategoryComponent implements OnInit {
     this.catID = this.route.snapshot.paramMap.get('id');
     this.getAllProducts();
     this.getCategory();
+
+
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
