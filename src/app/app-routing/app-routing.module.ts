@@ -11,6 +11,8 @@ import {CategoryComponent} from '../category/category.component';
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component';
 import {AddProductComponent} from '../add-product/add-product.component';
 import {ProductViewComponent} from '../product-view/product-view.component';
+import {CartComponent} from '../cart/cart.component';
+import {MyAccountComponent} from '../my-account/my-account.component';
 
 
 const routes: Routes = [
@@ -21,6 +23,8 @@ const routes: Routes = [
   {path : 'activate', component: ActivateComponent},
   {path : 'category/:id', component: CategoryComponent},
   {path : 'product/:id', component: ProductViewComponent},
+  {path : 'cart', component: CartComponent},
+  {path : 'myaccount', component: MyAccountComponent},
   {path : 'addproduct', component: AddProductComponent},
   {path : 'forgotPassword', component: ForgotPasswordComponent},
   {path: '', redirectTo: 'start', pathMatch: 'full' },

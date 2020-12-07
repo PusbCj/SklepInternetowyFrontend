@@ -25,6 +25,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import {PaginatorModule} from 'primeng/paginator';
 import {SliderModule} from 'primeng/slider';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MyAccountComponent } from './my-account/my-account.component';
     ForgotPasswordComponent,
     AddProductComponent,
     ProductViewComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
