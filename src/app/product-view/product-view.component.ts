@@ -61,7 +61,6 @@ productUrlBig: PhotoUrl;
         phot.thumbnailImageSrc = x.url;
         return phot;
       });
-      console.log(this.images);
     }, res => this.router.navigate(['/pagenotfound']));
   }
 
