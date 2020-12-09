@@ -8,28 +8,56 @@
     <div class="col-sm-8" style="margin-bottom: 10px">
       <div class="row">
         <div class="col-sm-6">
+          <form [formGroup]="changeData" (ngSubmit)="changeUserData(changeData)">
           <div class="yourdate">
             <h6>TWOJE DANE<sup style="color: red;">*</sup></h6>
             <p>adres e-mail:</p>
-            <input  type="text" >
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': (d.email.touched || d.email.dirty) && d.email.errors }" />
+            <div *ngIf="(d.email.touched || d.email.dirty) && d.email.errors" class="invalid-feedback">
+              <div *ngIf="d.email.errors.required">Email jest wymagany</div>
+              <div *ngIf="d.email.errors.email">Email jest nieprawidłowy</div>
+            </div>
             <p>imię</p>
-            <input type="text">
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': (d.firstName.touched || d.firstName.dirty) && d.firstName.errors }" />
+            <div *ngIf="(d.firstName.touched || d.firstName.dirty) && d.firstName.errors" class="invalid-feedback">
+              <div *ngIf="d.firstName.errors.required">Imię jest wymagane</div>
+            </div>
             <p>nazwisko</p>
-            <input type="text">
+            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': (d.lastName.touched || d.lastName.dirty) && d.lastName.errors }" />
+            <div *ngIf="(d.lastName.touched || d.lastName.dirty) && d.lastName.errors" class="invalid-feedback">
+              <div *ngIf="d.lastName.errors.required">Nazwisko jest wymagane</div>
+            </div>
             <p>ulica</p>
-            <input  type="text" >
+            <input type="text" formControlName="street" class="form-control" [ngClass]="{ 'is-invalid': (d.street.touched || d.street.dirty) && d.street.errors }" />
+            <div *ngIf="(d.street.touched || d.street.dirty) && d.street.errors" class="invalid-feedback">
+              <div *ngIf="d.street.errors.required">Ulica jest wymagana</div>
+            </div>
             <p>numer domu</p>
-            <input type="text">
+            <input type="text" formControlName="houseNumber" class="form-control" [ngClass]="{ 'is-invalid': (d.houseNumber.touched || d.houseNumber.dirty) && d.houseNumber.errors }" />
+            <div *ngIf="(d.houseNumber.touched || d.houseNumber.dirty) && d.houseNumber.errors" class="invalid-feedback">
+              <div *ngIf="d.houseNumber.errors.required">Numer domu jest wymagany</div>
+            </div>
             <p>miasto</p>
-            <input  type="text" >
+            <input type="text" formControlName="nameAddress" class="form-control" [ngClass]="{ 'is-invalid': (d.nameAddress.touched || d.nameAddress.dirty) && d.nameAddress.errors }" />
+            <div *ngIf="(d.nameAddress.touched || d.nameAddress.dirty) && d.nameAddress.errors" class="invalid-feedback">
+              <div *ngIf="d.nameAddress.errors.required">Miasto jest wymagane</div>
+            </div>
             <p>kod pocztowy</p>
-            <input type="text">
+            <input type="text" formControlName="postCode" class="form-control" [ngClass]="{ 'is-invalid': (d.postCode.touched || d.postCode.dirty) && d.postCode.errors }" />
+            <div *ngIf="(d.postCode.touched || d.postCode.dirty) && d.postCode.errors" class="invalid-feedback">
+              <div *ngIf="d.postCode.errors.required">Kod pocztowy jest wymagany</div>
+            </div>
             <p>aktualne hasło</p>
             <input type="password">
             <br>
             <div class="row">
               <div class="col-12 text-center" style="margin-top: 20px">
-                <button type="submit" class=" btn btn-custom btn-lg  ">ZAPISZ</button>
+                <button *ngIf="!(d.email.errors || d.firstName.errors || d.lastName.errors ||
+                d.street.errors || d.houseNumber.errors || d.nameAddress.errors || d.postCode.errors); else disabled"
+                type="submit" class=" btn btn-custom btn-lg  " >ZAPISZ</button>
+                <ng-template #disabled>
+                  <button  type="submit" class=" btn btn-custom btn-lg  " disabled>ZAPISZ</button>
+                </ng-template>
                 <p></p>
               </div>
             </div>
@@ -37,20 +65,37 @@
               <p style="color: red; font-weight: bold; font-size: small; margin-top: 20px; margin-bottom: 10px"><sup>*</sup> Wszystkie pola są wymagane</p>
             </div>
           </div>
+          </form>
         </div>
         <div class="col-sm-6">
+          <form [formGroup]="changePassword" (ngSubmit)="changeUserPassword(changePassword)">
           <div class="changepassword">
             <h6>ZMIANA HASŁA<sup style="color: red;">*</sup></h6>
             <p>aktualne hasło:</p>
             <input  type="password"  id="currentPasswordInput"  name="currentPassword"  value="">
             <p>nowe hasło</p>
-            <input type="password">
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': (p.password.touched || p.password.dirty) && p.password.errors }" />
+            <div *ngIf="(p.password.touched || p.password.dirty) && p.password.errors" class="invalid-feedback">
+              <div *ngIf="p.password.errors.required">Wpisz nowe hasło</div>
+              <div *ngIf="p.password.errors.minlength">Minimalna długość hasła to 6 znaków</div>
+            </div>
             <p>powtórz nowe hasło</p>
-            <input type="password">
+            <input type="password" formControlName="passwordRepeat" class="form-control" [ngClass]="{ 'is-invalid': (p.passwordRepeat.touched || p.passwordRepeat.dirty) && (p.passwordRepeat.errors || changePassword.value.password != changePassword.value.passwordRepeat) }" />
+            <div *ngIf="p.passwordRepeat.touched && p.passwordRepeat.errors " class="invalid-feedback">
+              <div *ngIf="p.passwordRepeat.errors.required">Należy wpisać hasło ponownie</div>
+            </div>
+            <div *ngIf="(p.passwordRepeat.touched || p.passwordRepeat.dirty) && changePassword.value.password != changePassword.value.passwordRepeat " class="invalid-feedback">
+              Wpisane hasła różnią się od siebie
+            </div>
             <br>
             <div class="row">
               <div class="col-12 text-center" style="margin-top: 20px">
-            <button type="submit" class=" btn btn-custom btn-lg  " >ZAPISZ</button>
+            <button *ngIf="!(changePassword.value.password != changePassword.value.passwordRepeat ||
+             p.password.errors || p.passwordRepeat.errors ); else disabled"
+             type="submit" class=" btn btn-custom btn-lg  " >ZAPISZ</button>
+             <ng-template #disabled>
+               <button  type="submit" class=" btn btn-custom btn-lg  " disabled>ZAPISZ</button>
+             </ng-template>
             <p></p>
               </div>
 
@@ -59,6 +104,7 @@
             <p style="color: red; font-weight: bold; font-size: small; margin-top: 20px; margin-bottom: 10px"><sup>*</sup> Wszystkie pola są wymagane</p>
             </div>
           </div>
+          </form>
 
         </div>
       </div>

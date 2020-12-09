@@ -24,7 +24,7 @@
             <h4>Hasło *</h4>
           </div></div>
           <div class="col-sm-6"><div>
-            <input type="text" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': (f.password.touched || f.password.dirty) && f.password.errors }" />
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': (f.password.touched || f.password.dirty) && f.password.errors }" />
             <div *ngIf="(f.password.touched || f.password.dirty) && f.password.errors" class="invalid-feedback">
               <div *ngIf="f.password.errors.required">Hasło jest wymagane</div>
               <div *ngIf="f.password.errors.minlength">Minimalna długość hasła to 6 znaków</div>
@@ -37,7 +37,7 @@
             <h4>Powtórz hasło *</h4>
           </div></div>
           <div class="col-sm-6"><div>
-            <input type="text" formControlName="passwordRepeat" class="form-control" [ngClass]="{ 'is-invalid': (f.passwordRepeat.touched || f.passwordRepeat.dirty) && (f.passwordRepeat.errors || registerForm.value.password != registerForm.value.passwordRepeat) }" />
+            <input type="password" formControlName="passwordRepeat" class="form-control" [ngClass]="{ 'is-invalid': (f.passwordRepeat.touched || f.passwordRepeat.dirty) && (f.passwordRepeat.errors || registerForm.value.password != registerForm.value.passwordRepeat) }" />
             <div *ngIf="f.passwordRepeat.touched && f.passwordRepeat.errors " class="invalid-feedback">
               <div *ngIf="f.passwordRepeat.errors.required">Należy wpisać hasło ponownie</div>
             </div>
@@ -136,8 +136,8 @@
           <div class="col-12 "><div>
             <div *ngIf="status.length>0" class="alert alert-danger">{{status}}</div>
             <button *ngIf="!(registerForm.value.password != registerForm.value.passwordRepeat ||
-             f.username.errors || f.password.errors || f.passwordRepeat.errors && f.email.errors ||
-             f.firstName.errors || f.lastName.errors || f.street.errors && f.houseNumber.errors ||
+             f.username.errors || f.password.errors || f.passwordRepeat.errors || f.email.errors ||
+             f.firstName.errors || f.lastName.errors || f.street.errors || f.houseNumber.errors ||
              f.nameAddress.errors || f.postCode.errors); else disabled" type="submit" class=" float-right btn btn-success btn-lg btn-block pot">
               Zarejestruj</button>
             <ng-template #disabled>
