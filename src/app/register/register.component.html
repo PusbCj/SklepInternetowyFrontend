@@ -1,5 +1,5 @@
 <div class="container" style="margin-top: 1em">
-  <form #regForm="ngForm" (ngSubmit)="registerUser(regForm)" ngForm >
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm)">
     <div class="row"></div>
     <div class="col-md-6 offset-3">
       <div class="zal">
@@ -8,39 +8,138 @@
 
         <div class="row">
           <div class="col-sm-6"><div>
-            <h4>Nazwa użytkownika:</h4>
-            <h4>Hasło:</h4>
-            <h4>Powtórz hasło:</h4>
-            <h4>Email:</h4>
-            <h4>Imię</h4>
-            <h4>Nazwisko</h4>
-            <h4>Ulica:</h4>
-            <h4>Numer domu:</h4>
-            <h4>Miasto:</h4>
-            <h4>Kod pocztowy:</h4>
+            <h4>Nazwa użytkownika *</h4>
           </div></div>
           <div class="col-sm-6"><div>
-            <input  type="text"  id="1"  name="username" ngModel value="">
-            <input type="password" value="" id="passwordInput" name="password" ngModel>
-            <input type="password" value="" id="password2Input" name="passwordRepeat" ngModel>
-            <input  type="text"  id="2"  name="email" ngModel value="">
-            <input  type="text"  id="3"  name="firstName" ngModel value="">
-            <input  type="text"  id="4"  name="lastName" ngModel value="">
-            <input  type="text"  id="5"  name="street" ngModel value="">
-            <input  type="number"  id="6"  name="houseNumber" ngModel value="">
-            <input  type="text"  id="7"  name="nameAddress" ngModel value="">
-            <input  type="text"  id="8"  name="postCode" ngModel value="">
+            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': (f.username.touched || f.username.dirty) && f.username.errors }" />
+            <div *ngIf="(f.username.touched || f.username.dirty) && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Użytkownik jest wymagany</div>
+              <div *ngIf="f.username.errors.minlength">Minimalna długość nazwy użytkownika to 4 znaki</div>
+            </div>
           </div></div>
-
         </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div>
+            <h4>Hasło *</h4>
+          </div></div>
+          <div class="col-sm-6"><div>
+            <input type="text" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': (f.password.touched || f.password.dirty) && f.password.errors }" />
+            <div *ngIf="(f.password.touched || f.password.dirty) && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Hasło jest wymagane</div>
+              <div *ngIf="f.password.errors.minlength">Minimalna długość hasła to 6 znaków</div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div>
+            <h4>Powtórz hasło *</h4>
+          </div></div>
+          <div class="col-sm-6"><div>
+            <input type="text" formControlName="passwordRepeat" class="form-control" [ngClass]="{ 'is-invalid': (f.passwordRepeat.touched || f.passwordRepeat.dirty) && (f.passwordRepeat.errors || registerForm.value.password != registerForm.value.passwordRepeat) }" />
+            <div *ngIf="f.passwordRepeat.touched && f.passwordRepeat.errors " class="invalid-feedback">
+              <div *ngIf="f.passwordRepeat.errors.required">Należy wpisać hasło ponownie</div>
+            </div>
+            <div *ngIf="(f.passwordRepeat.touched || f.passwordRepeat.dirty) && registerForm.value.password != registerForm.value.passwordRepeat " class="invalid-feedback">
+              Wpisane hasła różnią się od siebie
+            </div>
+          </div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div>
+            <h4>Email *</h4>
+          </div></div>
+          <div class="col-sm-6"><div>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': (f.email.touched || f.email.dirty) && f.email.errors }" />
+            <div *ngIf="(f.email.touched || f.email.dirty) && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email jest wymagany</div>
+              <div *ngIf="f.email.errors.email">Email jest nieprawidłowy</div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div>
+            <h4>Imię *</h4>
+          </div></div>
+          <div class="col-sm-6"><div>
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': (f.firstName.touched || f.firstName.dirty) && f.firstName.errors }" />
+            <div *ngIf="(f.firstName.touched || f.firstName.dirty) && f.firstName.errors" class="invalid-feedback">
+              <div *ngIf="f.firstName.errors.required">Imię jest wymagane</div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div>
+            <h4>Nazwisko *</h4>
+          </div></div>
+          <div class="col-sm-6"><div>
+            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': (f.lastName.touched || f.lastName.dirty) && f.lastName.errors }" />
+            <div *ngIf="(f.lastName.touched || f.lastName.dirty) && f.lastName.errors" class="invalid-feedback">
+              <div *ngIf="f.lastName.errors.required">Nazwisko jest wymagane</div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div>
+            <h4>Ulica *</h4>
+          </div></div>
+          <div class="col-sm-6"><div>
+            <input type="text" formControlName="street" class="form-control" [ngClass]="{ 'is-invalid': (f.street.touched || f.street.dirty) && f.street.errors }" />
+            <div *ngIf="(f.street.touched || f.street.dirty) && f.street.errors" class="invalid-feedback">
+              <div *ngIf="f.street.errors.required">Ulica jest wymagana</div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div>
+            <h4>Numer domu *</h4>
+          </div></div>
+          <div class="col-sm-6"><div>
+            <input type="text" formControlName="houseNumber" class="form-control" [ngClass]="{ 'is-invalid': (f.houseNumber.touched || f.houseNumber.dirty) && f.houseNumber.errors }" />
+            <div *ngIf="(f.houseNumber.touched || f.houseNumber.dirty) && f.houseNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.houseNumber.errors.required">Numer domu jest wymagany</div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div>
+            <h4>Miasto *</h4>
+          </div></div>
+          <div class="col-sm-6"><div>
+            <input type="text" formControlName="nameAddress" class="form-control" [ngClass]="{ 'is-invalid': (f.nameAddress.touched || f.nameAddress.dirty) && f.nameAddress.errors }" />
+            <div *ngIf="(f.nameAddress.touched || f.nameAddress.dirty) && f.nameAddress.errors" class="invalid-feedback">
+              <div *ngIf="f.nameAddress.errors.required">Miasto jest wymagane</div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6"><div>
+            <h4>Kod pocztowy *</h4>
+          </div></div>
+          <div class="col-sm-6"><div>
+            <input type="text" formControlName="postCode" class="form-control" [ngClass]="{ 'is-invalid': (f.postCode.touched || f.postCode.dirty) && f.postCode.errors }" />
+            <div *ngIf="(f.postCode.touched || f.postCode.dirty) && f.postCode.errors" class="invalid-feedback">
+              <div *ngIf="f.postCode.errors.required">Kod pocztowy jest wymagany</div>
+            </div>
+          </div></div>
+        </div>
+
         <div class="row">
           <div class="col-12 "><div>
-            <div *ngIf="regForm.value.password != regForm.value.passwordRepeat" class="alert alert-danger"> hasła nie są jednakowe </div>
             <div *ngIf="status.length>0" class="alert alert-danger">{{status}}</div>
-            <button *ngIf="regForm.value.password == regForm.value.passwordRepeat &&
-             regForm.value.username && regForm.value.password &&
-              regForm.value.email; else disabled" type="submit" class=" float-right btn btn-success btn-lg btn-block pot">
-              Zarejstruj</button>
+            <button *ngIf="!(registerForm.value.password != registerForm.value.passwordRepeat ||
+             f.username.errors || f.password.errors || f.passwordRepeat.errors && f.email.errors ||
+             f.firstName.errors || f.lastName.errors || f.street.errors && f.houseNumber.errors ||
+             f.nameAddress.errors || f.postCode.errors); else disabled" type="submit" class=" float-right btn btn-success btn-lg btn-block pot">
+              Zarejestruj</button>
             <ng-template #disabled>
             <button  type="button" class=" float-right btn btn-success btn-lg btn-block pot" disabled>Zarejestruj</button>
             </ng-template>
@@ -49,7 +148,6 @@
         </div>
 
       </div>
-
     </div>
 
   </form>

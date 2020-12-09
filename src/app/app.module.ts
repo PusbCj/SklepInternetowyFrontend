@@ -14,7 +14,7 @@ import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { ActivateComponent } from './activate/activate.component';
@@ -56,7 +56,8 @@ import {Galleria, GalleriaContent, GalleriaModule} from 'primeng/galleria';
     HttpClientModule,
     PaginatorModule,
     SliderModule,
-    GalleriaModule
+    GalleriaModule,
+    ReactiveFormsModule
   ],
   providers: [MessageService,
     { provide: LocationStrategy, useClass: PathLocationStrategy}],
