@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {ToastModule} from 'primeng/toast';
 
 import { AppComponent } from './app.component';
@@ -10,7 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { StartComponent } from './start/start.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {LocationStrategy, PathLocationStrategy, registerLocaleData} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -27,6 +27,8 @@ import {SliderModule} from 'primeng/slider';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { CartComponent } from './cart/cart.component';
 import {Galleria, GalleriaContent, GalleriaModule} from 'primeng/galleria';
+import {InputNumberModule} from 'primeng/inputnumber';
+import localPl from '@angular/common/locales/pl';
 
 @NgModule({
   declarations: [
@@ -57,10 +59,14 @@ import {Galleria, GalleriaContent, GalleriaModule} from 'primeng/galleria';
     PaginatorModule,
     SliderModule,
     GalleriaModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputNumberModule
   ],
   providers: [MessageService,
-    { provide: LocationStrategy, useClass: PathLocationStrategy}],
+    {      provide: LocationStrategy, useClass: PathLocationStrategy},
+    { provide: LocationStrategy, useClass: PathLocationStrategy},
+    {provide: LOCALE_ID, useValue: "pl"}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+registerLocaleData(localPl, "pl");

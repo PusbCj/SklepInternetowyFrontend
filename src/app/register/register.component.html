@@ -1,16 +1,16 @@
 <div class="container" style="margin-top: 1em">
   <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm)">
     <div class="row"></div>
-    <div class="col-md-6 offset-3">
+    <div class="col-xl-6 offset-xl-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
       <div class="zal">
         <h1>Zarejestruj się</h1>
         <h5>Podaj swoje dane:</h5>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Nazwa użytkownika *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': (f.username.touched || f.username.dirty) && f.username.errors }" />
             <div *ngIf="(f.username.touched || f.username.dirty) && f.username.errors" class="invalid-feedback">
               <div *ngIf="f.username.errors.required">Użytkownik jest wymagany</div>
@@ -20,10 +20,10 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Hasło *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': (f.password.touched || f.password.dirty) && f.password.errors }" />
             <div *ngIf="(f.password.touched || f.password.dirty) && f.password.errors" class="invalid-feedback">
               <div *ngIf="f.password.errors.required">Hasło jest wymagane</div>
@@ -37,10 +37,10 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Powtórz hasło *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="password" formControlName="passwordRepeat" class="form-control" [ngClass]="{ 'is-invalid': (f.passwordRepeat.touched || f.passwordRepeat.dirty) && (f.passwordRepeat.errors || registerForm.value.password != registerForm.value.passwordRepeat) }" />
             <div *ngIf="f.passwordRepeat.touched && f.passwordRepeat.errors " class="invalid-feedback">
               <div *ngIf="f.passwordRepeat.errors.required">Należy wpisać hasło ponownie</div>
@@ -52,10 +52,10 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Email *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': (f.email.touched || f.email.dirty) && f.email.errors }" />
             <div *ngIf="(f.email.touched || f.email.dirty) && f.email.errors" class="invalid-feedback">
               <div *ngIf="f.email.errors.required">Email jest wymagany</div>
@@ -65,10 +65,10 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Imię *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': (f.firstName.touched || f.firstName.dirty) && f.firstName.errors }" />
             <div *ngIf="(f.firstName.touched || f.firstName.dirty) && f.firstName.errors" class="invalid-feedback">
               <div *ngIf="f.firstName.errors.required">Imię jest wymagane</div>
@@ -77,10 +77,10 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Nazwisko *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': (f.lastName.touched || f.lastName.dirty) && f.lastName.errors }" />
             <div *ngIf="(f.lastName.touched || f.lastName.dirty) && f.lastName.errors" class="invalid-feedback">
               <div *ngIf="f.lastName.errors.required">Nazwisko jest wymagane</div>
@@ -89,10 +89,10 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Ulica *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="text" formControlName="street" class="form-control" [ngClass]="{ 'is-invalid': (f.street.touched || f.street.dirty) && f.street.errors }" />
             <div *ngIf="(f.street.touched || f.street.dirty) && f.street.errors" class="invalid-feedback">
               <div *ngIf="f.street.errors.required">Ulica jest wymagana</div>
@@ -101,10 +101,10 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Numer domu *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="text" formControlName="houseNumber" class="form-control" [ngClass]="{ 'is-invalid': (f.houseNumber.touched || f.houseNumber.dirty) && f.houseNumber.errors }" />
             <div *ngIf="(f.houseNumber.touched || f.houseNumber.dirty) && f.houseNumber.errors" class="invalid-feedback">
               <div *ngIf="f.houseNumber.errors.required">Numer domu jest wymagany</div>
@@ -113,10 +113,10 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Miasto *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="text" formControlName="nameAddress" class="form-control" [ngClass]="{ 'is-invalid': (f.nameAddress.touched || f.nameAddress.dirty) && f.nameAddress.errors }" />
             <div *ngIf="(f.nameAddress.touched || f.nameAddress.dirty) && f.nameAddress.errors" class="invalid-feedback">
               <div *ngIf="f.nameAddress.errors.required">Miasto jest wymagane</div>
@@ -125,10 +125,10 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <h4>Kod pocztowy *</h4>
           </div></div>
-          <div class="col-sm-6"><div>
+          <div class="col-md-6"><div>
             <input type="text" formControlName="postCode" class="form-control" [ngClass]="{ 'is-invalid': (f.postCode.touched || f.postCode.dirty) && f.postCode.errors }" />
             <div *ngIf="(f.postCode.touched || f.postCode.dirty) && f.postCode.errors" class="invalid-feedback">
               <div *ngIf="f.postCode.errors.required">Kod pocztowy jest wymagany</div>

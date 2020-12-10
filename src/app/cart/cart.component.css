@@ -1,0 +1,114 @@
+.squa{
+  background-color: #ecc34a;
+  margin-bottom: 10px;
+
+}
+
+.squabl{
+  background-color: #bea147;
+  margin-bottom: 10px;
+  color: #3B3B3B;
+}
+
+.squar{
+  padding : 10px 0 10px;
+
+  margin-left: 0px;
+}
+.squar p{
+  margin: 0;
+  padding-left: 10px;
+  padding-top: 0;
+  font-size: small;
+  font-weight: bold;
+}
+.squar h6{
+  margin: 0;
+  padding-left: 10px;
+  padding-bottom: 0;
+  font-weight: bold;
+}
+
+
+
+
+
+.square2 {
+  width: 50px;
+  height: 50px;
+  border: 3px solid black;
+  padding-top: 10px;
+  text-align: center;
+}
+
+
+
+
+.zdjecie img{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+.zdjeciebig {
+  transition: all 0.5s ease-in-out;
+}
+.zdjeciebig:hover {
+  -webkit-box-shadow: 3px 3px 27px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow:    3px 3px 27px 0px rgba(0, 0, 0, 1);
+  box-shadow:         3px 3px 27px 0px rgba(0, 0, 0, 1);
+}
+.zdjecie {
+  transition: all 0.5s ease-in-out;
+}
+
+.photo img{
+  transition: all 0.5s ease-in-out;
+}
+
+
+.zdjecie{
+  border: 3px solid #dddddd;
+  position:relative;
+  overflow:hidden;
+  padding-bottom:100%;
+}
+
+.photo{
+
+  margin: 5px;
+}
+
+.prod{
+  border: 2px solid #dddddd;
+  margin-bottom: 8px;
+  background: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.prod:hover{
+
+  background: #f8f3e8;
+  -webkit-box-shadow: 3px 3px 27px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow:    3px 3px 27px 0px rgba(0, 0, 0, 1);
+  box-shadow:         3px 3px 27px 0px rgba(0, 0, 0, 1);
+}
+
+input{
+  border: 0;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.btnico{
+  margin: 0;
+  padding: 0;
+
+}

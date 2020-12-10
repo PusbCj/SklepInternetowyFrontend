@@ -13,7 +13,7 @@ import {CategoryService} from '../services/category.service';
 })
 export class CategoryComponent implements OnInit {
 
-  desc = false;
+  sortPro = 'price,asc';
   age = null;
   pageSize = 10;
   pageNumber = 0;
@@ -48,7 +48,6 @@ export class CategoryComponent implements OnInit {
 
     this.categoryService.getById(Number(this.catID)).subscribe(res =>{
       this.titleCategory = res.name;
-      console.log(res);
     }, error => {
       this.titleCategory = '';
     });
@@ -57,7 +56,7 @@ export class CategoryComponent implements OnInit {
    getAllProducts(): void {
     const age2 = this.age === null ? 100 : this.age;
     this.productService.getAllProductsByParameters(this.catID, age2,
-      this.desc, this.pageNumber, this.pageSize, this.rangeValues[1], this.rangeValues[0], this.brand)
+      this.sortPro, this.pageNumber, this.pageSize, this.rangeValues[1], this.rangeValues[0], this.brand)
       .subscribe(res => {
         this.listProduct = res.content;
         this.totalElements = res.totalElements;
@@ -76,5 +75,9 @@ export class CategoryComponent implements OnInit {
     this.rangeValues = [];
     this.rangeValues[0] = 0;
     this.rangeValues[1] = 500;
+  }
+
+  changeSelect(): void {
+    this.getAllProducts();
   }
 }

@@ -1,81 +1,107 @@
 <div class="container" style="margin-top: 40px">
-  <button class="btn btn-success" style="border-radius: 10px" (click)="undo()"><i class="fas fa-arrow-left"></i></button>
+  <button class="btn btn-success" style="border-radius: 10px" (click)="undo()"><i class="fas fa-arrow-left"></i>
+  </button>
   <div class="row">
     <div class="col-sm-6">
-      <div class="photobig"><div class="zdjeciebig">
-        <img  src="{{productUrlBig?.url}}" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="setActiveId()" ></div>
-      </div> </div>
+      <div class="photobig">
+        <div class="zdjeciebig">
+          <img src="{{productUrlBig?.url}}" data-toggle="modal" data-target=".bd-example-modal-lg"
+               (click)="setActiveId()"></div>
+      </div>
+    </div>
     <div class="col-sm-2">
       <div class="row">
-        <div class="col-sm-12"><div class="photo" (click)="changePhoto(0)"><div class="zdjecie"><img  src="{{product?.photoUrl[0]?.url}}">miniatura</div></div></div>
-        <div class="col-sm-12"><div class="photo" (click)="changePhoto(1)"><div class="zdjecie" ><img src="{{product?.photoUrl[1]?.url}}">miniatura</div></div></div>
-        <div class="col-sm-12"><div class="photo" (click)="changePhoto(2)"><div class="zdjecie"><img src="{{product?.photoUrl[2]?.url}}">miniatura</div></div></div>
+        <div class="col-sm-12">
+          <div class="photo" (click)="changePhoto(0)">
+            <div class="zdjecie"><img src="{{product?.photoUrl[0]?.url}}">miniatura</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="photo" (click)="changePhoto(1)">
+            <div class="zdjecie"><img src="{{product?.photoUrl[1]?.url}}">miniatura</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="photo" (click)="changePhoto(2)">
+            <div class="zdjecie"><img src="{{product?.photoUrl[2]?.url}}">miniatura</div>
+          </div>
+        </div>
       </div>
 
     </div>
-    <div class="col-sm-4" style="height: auto;"><div>
-      <div class="row">
-        <div class="col-sm-12">
-          <h3 style="padding-top: 5px">{{product.name}}</h3>
-          <h5 style="padding-top: 15px; padding-left: 10px"> &nbsp;CENA &nbsp;&nbsp;&nbsp;
-            <span style="color: green; font-size: xx-large">{{product.price}}zł <span style="font-size: large">z VAT</span></span></h5>
+    <div class="col-sm-4" style="height: auto;">
+      <div>
+        <div class="row">
+          <div class="col-sm-12">
+            <h3 style="padding-top: 5px">{{product.name}}</h3>
+            <h5 style="padding-top: 15px; padding-left: 10px"> &nbsp;CENA &nbsp;&nbsp;&nbsp;
+              <span style="color: green; font-size: xx-large">{{product.price}}zł <span
+                style="font-size: large">z VAT</span></span></h5>
 
-          <p class="dostawa" ><i class="fas fa-truck"></i> Darmowa dostawa od 200zł</p>
+            <p class="dostawa"><i class="fas fa-truck"></i> Darmowa dostawa od 200zł</p>
+          </div>
+
+
+          <div class="col-sm-12 " style="position: absolute; bottom: 0;">
+            <button type="button" class="btn btn-block btn-success">Dodaj do koszyka</button>
+          </div>
+
         </div>
 
-
-
-
-
-        <div class="col-sm-12 " style="position: absolute; bottom: 0;" >
-          <button type="button" class="btn btn-block btn-success">Dodaj do koszyka</button>
-        </div>
 
       </div>
-
-
-    </div></div>
+    </div>
 
   </div>
-<div class="row" style="margin-top: 40px">
-  <div class="col-sm-8" >
-    <div class="cont" style="border-top: 1px solid #dddddd">
-<h5>Szczegóły produktu</h5>
-      {{product.description}}
+  <div class="row" style="margin-top: 40px">
+    <div class="col-sm-8">
+      <div class="cont" style="border-top: 1px solid #dddddd">
+        <h5>Szczegóły produktu</h5>
+        {{product.description}}
 
-    </div></div>
+      </div>
+    </div>
 
 
-  <div class="col-sm-4" >
-    <div  class="cont" style="border-top: 1px solid #dddddd">
-<h5>Dostawa</h5>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-    </div></div>
+    <div class="col-sm-4">
+      <div class="cont" style="border-top: 1px solid #dddddd">
+        <h5>Dostawa</h5>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum
+      </div>
+    </div>
+  </div>
+
+
 </div>
 
 
-</div>
-
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog  modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h2  class="modal-title w-100 text-center"  style="text-align: center !important;" >{{product?.name}}</h2>
+        <h2 class="modal-title w-100 text-center" style="text-align: center !important;">{{product?.name}}</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <span *ngIf="images!=null">
-<p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '1200px', 'margin-top':'2em'}" [numVisible]="5"
-            [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [showIndicators]="true" [showItemNavigatorsOnHover]="true"
+<p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions"
+            [containerStyle]="{'max-width': '1200px', 'margin-top':'2em'}" [numVisible]="5"
+            [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [showIndicators]="true"
+            [showItemNavigatorsOnHover]="true"
             [(activeIndex)]="activeIndex" [showIndicatorsOnItem]="true">
     <ng-template pTemplate="item" let-item>
-        <img [src]="item.previewImageSrc" style="width: 100%; display: block;" />
+        <img [src]="item.previewImageSrc" style="width: 100%; display: block;"/>
     </ng-template>
     <ng-template pTemplate="thumbnail" let-item>
         <div class="p-grid p-nogutter p-justify-center">
-            <img [src]="item.thumbnailImageSrc" style="display: block;" />
+            <img [src]="item.thumbnailImageSrc" style="display: block;"/>
         </div>
     </ng-template>
 </p-galleria>
