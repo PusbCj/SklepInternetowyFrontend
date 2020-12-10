@@ -13,7 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {LocationStrategy, PathLocationStrategy, registerLocaleData} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing/app-routing.module';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
@@ -29,6 +29,7 @@ import { CartComponent } from './cart/cart.component';
 import {Galleria, GalleriaContent, GalleriaModule} from 'primeng/galleria';
 import {InputNumberModule} from 'primeng/inputnumber';
 import localPl from '@angular/common/locales/pl';
+import {AuthInterceptor} from './interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,9 @@ import localPl from '@angular/common/locales/pl';
   ],
   providers: [MessageService,
     {      provide: LocationStrategy, useClass: PathLocationStrategy},
+    {provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true},
     { provide: LocationStrategy, useClass: PathLocationStrategy},
     {provide: LOCALE_ID, useValue: "pl"}],
   bootstrap: [AppComponent]

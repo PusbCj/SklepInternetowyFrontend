@@ -82,3 +82,21 @@
 .cont{
   padding-top: 20px;
 }
+
+input{
+  border: 0;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.plusminus input,button{
+  display: inline-block;
+  outline: none !important;
+  box-shadow: none !important;
+}
+

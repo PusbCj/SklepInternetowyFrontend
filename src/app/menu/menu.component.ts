@@ -28,4 +28,10 @@ export class MenuComponent implements OnInit {
   isNotLogged(): boolean {
     return sessionStorage.getItem('user') == null;
   }
+  items(): string {
+    if (sessionStorage.getItem('items') === null){
+      return String(0);
+    }
+    return sessionStorage.getItem('items');
+  }
 }

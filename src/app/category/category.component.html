@@ -45,7 +45,7 @@
             <ng-container *ngFor="let product of listProduct">
             <div class="col-sm-4 col-lg-4 col-xl-3" ><div class="product" routerLink="/product/{{product.id}}">
               <div class="zdjecie"><img src="{{product.photoUrl[0].url}}"></div><div style="padding: 10px 10px 0"><h6>{{product.name}}</h6>
-             <h5><span style="text-decoration: line-through;font-size: medium">{{product.price*1.4}}zł</span>
+             <h5><span style="text-decoration: line-through;font-size: medium">{{product.price*1.4|currency:"PLN"}}</span>
                <span style="color: green; font-size: large"> {{product.price}} ZŁ </span>
              </h5></div>
             </div>

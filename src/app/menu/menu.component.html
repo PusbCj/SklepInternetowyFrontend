@@ -42,7 +42,8 @@
       </span>
       <span *ngIf="!isNotLogged()">
         <button class="btn btn-outline my-2 my-sm-0" type="submit"  routerLink="/myaccount"><span><i class="fas fa-user"></i><p class="but">Twoje konto</p></span></button>
-        <button class="btn btn-outline my-2 my-sm-0" type="submit" routerLink="/cart"><span><i class="fas fa-shopping-basket"><span style="font-size: small;">0</span></i><p class="but">Koszyk</p></span></button>
+        <button class="btn btn-outline my-2 my-sm-0" type="submit" routerLink="/cart"><span><i class="fas fa-shopping-basket"><span style="font-size: small;">
+          {{items()}}</span></i><p class="but">Koszyk</p></span></button>
       <button class="btn btn-outline my-2 my-sm-0" type="submit" (click)="logOut()"><span><i class="fas fa-sign-out-alt"></i><p class="but">Wyloguj</p></span></button>
       </span>
     </form>

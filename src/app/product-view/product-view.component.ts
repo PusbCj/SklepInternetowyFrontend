@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductServiceService} from '../services/product-service.service';
 import {Product} from '../models/Product.model';
 import {Location} from '@angular/common';
 import {PhotoUrl} from '../models/PhotoUrl.models';
 import {PhotoCaru} from '../models/PhotoCaru.models';
+import {CartServiceService} from '../services/cart-service.service';
+import {ItemShopCart} from '../models/ItemShopCar.model';
+import {MessageService} from 'primeng/api';
 
 
 @Component({
@@ -14,16 +17,17 @@ import {PhotoCaru} from '../models/PhotoCaru.models';
 })
 export class ProductViewComponent implements OnInit {
 
+  quantity = 1;
   images: PhotoCaru[];
-product: Product;
-prodID = '';
-productUrlBig: PhotoUrl;
+  product: Product;
+  prodID = '';
+  productUrlBig: PhotoUrl;
   displayBasic = true;
   activeIndex = 0;
   activeId = 0;
 
 
-  responsiveOptions:any[] = [
+  responsiveOptions: any[] = [
     {
       breakpoint: '1024px',
       numVisible: 5
@@ -44,9 +48,11 @@ productUrlBig: PhotoUrl;
 
 
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
-              private router: Router, private location: Location) {
+              private router: Router, private location: Location, private cartService: CartServiceService,
+              private messageService: MessageService ) {
     this.product = new Product();
   }
+
   ngOnInit(): void {
 
     this.prodID = this.route.snapshot.paramMap.get('id');
@@ -64,16 +70,41 @@ productUrlBig: PhotoUrl;
     }, res => this.router.navigate(['/pagenotfound']));
   }
 
-  changePhoto( id: number): void {
+  changePhoto(id: number): void {
     this.productUrlBig = this.product.photoUrl[id];
     this.activeIndex = id;
     this.activeId = id;
   }
-  undo(): void{
+
+  undo(): void {
     this.location.back();
   }
 
   setActiveId(): void {
     this.activeIndex = this.activeId;
   }
+
+  minusQuantity(): void {
+    this.quantity = this.quantity - 1;
+    if (this.quantity < 1) {
+      this.quantity = 1;
+    }
+  }
+
+  addToCart(): void {
+    const cartItem = new ItemShopCart();
+    cartItem.product = this.product;
+    cartItem.quantity = this.quantity;
+    this.cartService.addProduct(cartItem).subscribe(res => {
+      this.messageService.add({ severity: 'success', summary: 'Sukces', detail: 'Podano produkt do koszyka'});
+      if ( res.itemShopCartList.length != null) {
+        sessionStorage.setItem('items', res.itemShopCartList.length);
+      }else{
+        sessionStorage.setItem('items', String(0));
+      }
+    }, error => {
+      this.messageService.add({ severity: 'error', summary: 'bład', detail: 'Nie udało się dodać produktu do koszyka'});
+    });
+  }
+
 }

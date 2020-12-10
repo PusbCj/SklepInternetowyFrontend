@@ -5,6 +5,7 @@ import {CategoryService} from '../services/category.service';
 import {Category} from '../models/Category.model';
 import {MessageService} from 'primeng/api';
 import {PhotoUrl} from '../models/PhotoUrl.models';
+import {CartServiceService} from '../services/cart-service.service';
 
 @Component({
   selector: 'app-add-product',
@@ -18,9 +19,10 @@ export class AddProductComponent implements OnInit {
   product: Product;
   categories: Array<Category>;
   idCategory = 1;
+
   constructor(private productService: ProductServiceService, private categoryService: CategoryService
               // tslint:disable-next-line:align
-              , private messageService: MessageService) {
+    , private messageService: MessageService) {
     this.product = new Product();
     this.categories = new Array<Category>();
     this.pathFiles = new Array();
@@ -35,11 +37,11 @@ export class AddProductComponent implements OnInit {
   onFileSelected(event): void {
     this.selectedFile = event.target.files[0];
     this.productService.addFile(this.selectedFile).subscribe(res => {
-    this.pathFile = res;
-    const photo = new PhotoUrl();
-    photo.url = res;
-    this.pathFiles.push(photo);
-    console.log(this.pathFiles);
+      this.pathFile = res;
+      const photo = new PhotoUrl();
+      photo.url = res;
+      this.pathFiles.push(photo);
+      console.log(this.pathFiles);
     }, error => {
       console.log(error);
     });
@@ -51,11 +53,13 @@ export class AddProductComponent implements OnInit {
     // tslint:disable-next-line:triple-equals
     this.product.category = this.categories.find(x => x.id == this.idCategory);
     this.productService.addProduct(this.product).subscribe(res => {
-      this.messageService.add({ severity: 'success', summary: 'Sukces', detail: 'Podano produkt'});
+      this.messageService.add({severity: 'success', summary: 'Sukces', detail: 'Podano produkt'});
       this.product = new Product();
       this.pathFiles = new Array<PhotoUrl>();
     }, error => {
-      this.messageService.add({ severity: 'error', summary: 'bład', detail: 'Nie udało się dodać błedu'});
+      this.messageService.add({severity: 'error', summary: 'bład', detail: 'Nie udało się dodać błedu'});
     });
   }
+
+
 }

@@ -53,7 +53,7 @@
     <div class="col-sm-9">
       <div class="row">
 
-        <ng-container *ngFor="let product of listproduct">
+        <ng-container *ngFor="let item of cart.itemShopCartList">
           <div class="col-12">
             <div class="prod">
 
@@ -61,32 +61,32 @@
 
                 <div class="col-sm-2 " style="margin-bottom: 5px; margin-top: 0px; padding-top: 0px">
                   <div class="photo">
-                    <div class="zdjecie"><img src="{{product?.photoUrl[0]?.url}}">miniatura
+                    <div class="zdjecie"><img src="{{item.product?.photoUrl[0]?.url}}">miniatura
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-3 align-self-center">
-                  <h4>{{product.name}}</h4>
+                  <h4>{{item.product.name}}</h4>
                 </div>
                 <div class="col-sm-2 align-self-center">
-                  <h6>Cena za sztuke</h6>
-                  <span style="color: green; font-weight: bold;font-size: large">{{product.price|currency:"PLN"}}
+                  <h6>Cena za sztukę</h6>
+                  <span style="color: green; font-weight: bold;font-size: large">{{item.product.price|currency:"PLN"}}
                     </span>
                 </div>
                 <div class="col-sm-2 align-self-center" >
-                  <button class="btn btnico"><i class="fas fa-minus"></i> </button><input value="1" type="number" style="height: 30px;width: 30px">
+                  <button class="btn btnico"><i class="fas fa-minus"></i> </button><input value="{{item.quantity}}" type="number" style="height: 30px;width: 30px">
                   <button class="btn btnico"><i class="fas fa-plus"></i></button>
                 </div>
                 <div class="col-sm-3 align-self-center" >
-                  <h6>Razem cena</h6>
-                  <span style="color: green; font-weight: bold;font-size: large">{{product.price|currency:"PLN"}}
+                  <h6>Razem</h6>
+                  <span style="color: green; font-weight: bold;font-size: large">{{item.product.price|currency:"PLN"}}
                     </span>
                 </div>
 
                 <p
                   style="text-align: right;font-size: small; margin-right: 5px; margin-bottom: 0; padding-bottom: 0;display: block;position: absolute;right: 10px ;top:0px">
                   <span>usuń</span>
-                  <button class="btn"><i class="fas fa-times"></i></button></p>
+                  <button (click)="delete(item)" class="btn"><i class="fas fa-times"></i></button></p>
               </div>
             </div>
           </div>
