@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {MessageService} from 'primeng/api';
 import {RegisterService} from '../services/register.service';
 import {RegData} from '../models/RegData';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -11,17 +11,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-status = '';
-registerForm: FormGroup;
 
   constructor(private router: Router, private messageService: MessageService, private registerService: RegisterService,
               private formBuilder: FormBuilder) {
   }
 
+  // tslint:disable-next-line:typedef
+    get f() { return this.registerForm.controls; }
+status = '';
+registerForm: FormGroup;
+
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8),
+        this.patternValidator(/\d/, { hasNumber: true }),
+        this.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
+        this.patternValidator(/[a-z]/, { hasSmallCase: true }),
+        this.patternValidator(/[!@#$%^&*()_+={};'":|,.<>/?-]/, { hasSpecialCharacters: true })]],
       passwordRepeat: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       firstName: ['', Validators.required],
@@ -33,8 +40,15 @@ registerForm: FormGroup;
     });
   }
 
-  // tslint:disable-next-line:typedef
-    get f() { return this.registerForm.controls; }
+  patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      if (!control.value) {
+        return null;
+      }
+      const valid = regex.test(control.value);
+      return valid ? null : error;
+    };
+  }
 
   registerUser(regForm: FormGroup): void {
     console.log(regForm.value);

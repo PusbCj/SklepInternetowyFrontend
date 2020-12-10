@@ -77,7 +77,11 @@
             <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': (p.password.touched || p.password.dirty) && p.password.errors }" />
             <div *ngIf="(p.password.touched || p.password.dirty) && p.password.errors" class="invalid-feedback">
               <div *ngIf="p.password.errors.required">Wpisz nowe hasło</div>
-              <div *ngIf="p.password.errors.minlength">Minimalna długość hasła to 6 znaków</div>
+              <div *ngIf="p.password.errors.minlength">Minimalna długość hasła to 8 znaków</div>
+              <div *ngIf="p.password.errors.hasNumber">Cyfra</div>
+              <div *ngIf="p.password.errors.hasCapitalCase">Duża litera</div>
+              <div *ngIf="p.password.errors.hasSmallCase">Mała litera</div>
+              <div *ngIf="p.password.errors.hasSpecialCharacters">Znak specjalny</div>
             </div>
             <p>powtórz nowe hasło</p>
             <input type="password" formControlName="passwordRepeat" class="form-control" [ngClass]="{ 'is-invalid': (p.passwordRepeat.touched || p.passwordRepeat.dirty) && (p.passwordRepeat.errors || changePassword.value.password != changePassword.value.passwordRepeat) }" />
