@@ -22,23 +22,23 @@ export class ProductViewComponent implements OnInit {
   product: Product;
   prodID = '';
   productUrlBig: PhotoUrl;
-  displayBasic = true;
+  displayBasic = false;
   activeIndex = 0;
   activeId = 0;
 
 
   responsiveOptions: any[] = [
     {
-      breakpoint: '1024px',
+      breakpoint: '1500px',
       numVisible: 5
     },
     {
-      breakpoint: '960px',
-      numVisible: 4
+      breakpoint: '1024px',
+      numVisible: 3
     },
     {
       breakpoint: '768px',
-      numVisible: 3
+      numVisible: 2
     },
     {
       breakpoint: '560px',
@@ -82,6 +82,7 @@ export class ProductViewComponent implements OnInit {
 
   setActiveId(): void {
     this.activeIndex = this.activeId;
+    this.displayBasic = true;
   }
 
   minusQuantity(): void {

@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-sm-3 align-self-center" >
                   <h6>Razem</h6>
-                  <span style="color: green; font-weight: bold;font-size: large">{{item.product.price|currency:"PLN"}}
+                  <span style="color: green; font-weight: bold;font-size: large">{{item.product.price*item.quantity|currency:"PLN"}}
                     </span>
                 </div>
 
@@ -91,6 +91,12 @@
             </div>
           </div>
         </ng-container>
+        <div class="col-12">
+          <div  class="pod" style="border: 3px solid #dddddd; text-align: right; padding-right: 10px">
+
+            <h5>DO ZAPŁATY  <span style="color: green">{{sumCart()|currency:"PLN"}}</span></h5>
+          </div>
+        </div>
       </div>
     </div>
 

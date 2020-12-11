@@ -5,7 +5,7 @@
     <div class="col-sm-6">
       <div class="photobig">
         <div class="zdjeciebig">
-          <img src="{{productUrlBig?.url}}" data-toggle="modal" data-target=".bd-example-modal-lg"
+          <img src="{{productUrlBig?.url}}"
                (click)="setActiveId()"></div>
       </div>
     </div>
@@ -87,25 +87,14 @@
 
 </div>
 
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog  modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title w-100 text-center" style="text-align: center !important;">{{product?.name}}</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <span *ngIf="images!=null">
-<p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions"
-            [containerStyle]="{'max-width': '1200px', 'margin-top':'2em'}" [numVisible]="5"
-            [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [showIndicators]="true"
+<span *ngIf="images!=null">
+<p-galleria [(value)]="images" [(visible)]="displayBasic" [responsiveOptions]="responsiveOptions"
+            [containerStyle]="{'max-width': '1500px', 'margin-top':'2em' }" [numVisible]="7"
+            [circular]="true" [fullScreen]="true" [showItemNavigators]="true" [showThumbnails]="false" [showIndicators]="true"
             [showItemNavigatorsOnHover]="true"
             [(activeIndex)]="activeIndex" [showIndicatorsOnItem]="true">
     <ng-template pTemplate="item" let-item>
-        <img [src]="item.previewImageSrc" style="width: 100%; display: block;"/>
+        <img [src]="item.previewImageSrc" style="; width: auto;min-height: 70vh; max-width: 90%;max-height: 90vh; display: block;"/>
     </ng-template>
     <ng-template pTemplate="thumbnail" let-item>
         <div class="p-grid p-nogutter p-justify-center">
@@ -115,6 +104,4 @@
 </p-galleria>
         </span>
 
-    </div>
-  </div>
-</div>
+

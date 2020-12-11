@@ -50,4 +50,8 @@ export class CartComponent implements OnInit {
 
     });
   }
+
+  public sumCart(): number {
+    return this.cart.itemShopCartList.map(item => item.quantity * item.product.price).reduce((a, b) => a + b, 0);
+  }
 }
