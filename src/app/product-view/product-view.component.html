@@ -94,7 +94,7 @@
             [showItemNavigatorsOnHover]="true"
             [(activeIndex)]="activeIndex" [showIndicatorsOnItem]="true">
     <ng-template pTemplate="item" let-item>
-        <img [src]="item.previewImageSrc" style="; width: auto;min-height: 70vh; max-width: 90%;max-height: 90vh; display: block;"/>
+        <img [src]="item.previewImageSrc" style=" width: 90vw; max-width: 100%;max-height: 90vh;  object-fit: contain "/>
     </ng-template>
     <ng-template pTemplate="thumbnail" let-item>
         <div class="p-grid p-nogutter p-justify-center">

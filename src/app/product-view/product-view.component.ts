@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductServiceService} from '../services/product-service.service';
 import {Product} from '../models/Product.model';
@@ -16,6 +16,7 @@ import {MessageService} from 'primeng/api';
   styleUrls: ['./product-view.component.css']
 })
 export class ProductViewComponent implements OnInit {
+
 
   quantity = 1;
   images: PhotoCaru[];
@@ -45,6 +46,7 @@ export class ProductViewComponent implements OnInit {
       numVisible: 1
     }
   ];
+
 
 
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,

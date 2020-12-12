@@ -29,21 +29,21 @@
       <div class="row">
         <div class="col-sm-12"><div>
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-lg-4">
               <h6>Sortuj:</h6><select style="font-family: Verdana; font-style: italic" [(ngModel)]="sortPro" (change)="changeSelect()">
               <option value="price,asc">Cena- od najniższej</option>
               <option value="price,desc">Cena- od najwyższej</option>
               <option value="name,asc">Nazwa- alfabetycznie</option>
             </select>
             </div>
-            <div class="col-sm-8">
+            <div class="col-lg-8">
           <p-paginator [rows]="10" (onPageChange)="paginate($event)" [totalRecords]="totalElements" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3" ></p-paginator></div></div>
         </div>
         </div>
           <div class="col-sm-12"><div>
           <div class="row">
             <ng-container *ngFor="let product of listProduct">
-            <div class="col-sm-4 col-lg-4 col-xl-3" ><div class="product" routerLink="/product/{{product.id}}">
+            <div class="col-md-4 col-lg-4 col-xl-3" ><div class="product" routerLink="/product/{{product.id}}">
               <div class="zdjecie"><img src="{{product.photoUrl[0].url}}"></div><div style="padding: 10px 10px 0"><h6>{{product.name}}</h6>
              <h5><span style="text-decoration: line-through;font-size: medium">{{product.price*1.4|currency:"PLN"}}</span>
                <span style="color: green; font-size: large"> {{product.price}} ZŁ </span>

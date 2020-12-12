@@ -1,47 +1,53 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-12 col-lg-3 d-none d-md-block" >
       <div class="row">
-        <div class="col-sm-12 squa">
-          <div class="row squar" style="height: 100px">
-            <div class="col-xl-2  align-self-center " style="padding-left: 0; ">
-              <div class="square2"><span style="font-weight: bold">1</span></div>
+        <div class=" col-4 col-lg-12 squa">
+          <div class="right-margin">
+            <div class="row squar" style="height: 100px">
+              <div class="col-xl-2  align-self-center " style="padding-left: 0; ">
+                <div class="square2"><span style="font-weight: bold">1</span></div>
 
-            </div>
-            <div class="col-10 align-self-center">
-              <div>
-                <p>KROK1</p>
-                <h6>KOSZYK</h6>
+              </div>
+              <div class="col-10 align-self-center">
+                <div>
+                  <p>KROK1</p>
+                  <h6>KOSZYK</h6>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-12 squabl">
-          <div class="row squar" style="height: 100px">
-            <div class="col-xl-2 align-self-center " style="padding-left: 0; ">
-              <div class="square2"><span style="font-weight: bold">2</span></div>
+        <div class="col-4 col-lg-12 squabl">
+          <div class="right-margin-fade">
+            <div class="row squar" style="height: 100px">
+              <div class="col-xl-2 align-self-center " style="padding-left: 0; ">
+                <div class="square2"><span style="font-weight: bold">2</span></div>
 
-            </div>
-            <div class="col-10 align-self-center">
-              <div>
-                <p>KROK2</p>
-                <h6>DOSTAWA</h6>
+              </div>
+              <div class="col-10 align-self-center">
+                <div>
+                  <p>KROK2</p>
+                  <h6>DOSTAWA</h6>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-12 squabl">
-          <div class="row squar" style="height: 100px">
-            <div class="col-xl-2 align-self-center " style="padding-left: 0; ">
-              <div class="square2"><span style="font-weight: bold">3</span></div>
+        <div class="col-4 col-lg-12 squabl">
+          <div class="right-margin-fade">
+            <div class="row squar" style="height: 100px">
+              <div class="col-xl-2 align-self-center " style="padding-left: 0; ">
+                <div class="square2 "><span style="font-weight: bold">3</span></div>
 
-            </div>
-            <div class="col-md-10 align-self-center">
-              <div>
-                <p>KROK3</p>
-                <h6>PODSUMOWANIE</h6>
+              </div>
+              <div class="col-md-10 align-self-center">
+                <div>
+                  <p>KROK3</p>
+                  <h6>PODSUMOWANIE</h6>
+                </div>
               </div>
             </div>
           </div>
@@ -50,51 +56,54 @@
 
       </div>
     </div>
-    <div class="col-sm-9">
+    <div class="col-12 col-lg-9">
       <div class="row">
 
         <ng-container *ngFor="let item of cart.itemShopCartList">
-          <div class="col-12">
+          <div class="col-sm-6 col-lg-12">
             <div class="prod">
 
               <div class="row">
 
-                <div class="col-sm-2 " style="margin-bottom: 5px; margin-top: 0px; padding-top: 0px">
+                <div class="col-lg-2 " style="margin-bottom: 5px; margin-top: 0px; padding-top: 0px;">
                   <div class="photo">
                     <div class="zdjecie"><img src="{{item.product?.photoUrl[0]?.url}}">miniatura
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-3 align-self-center">
+                <div class="col-lg-3 align-self-center">
                   <h4>{{item.product.name}}</h4>
                 </div>
-                <div class="col-sm-2 align-self-center">
+                <div class="col-lg-2 align-self-center">
                   <h6>Cena za sztukę</h6>
                   <span style="color: green; font-weight: bold;font-size: large">{{item.product.price|currency:"PLN"}}
                     </span>
                 </div>
-                <div class="col-sm-2 align-self-center" >
-                  <button class="btn btnico"><i class="fas fa-minus"></i> </button><input value="{{item.quantity}}" type="number" style="height: 30px;width: 30px">
+                <div class="col-lg-2 align-self-center">
+                  <button class="btn btnico"><i class="fas fa-minus"></i></button>
+                  <input value="{{item.quantity}}" type="number" style="height: 30px;width: 30px">
                   <button class="btn btnico"><i class="fas fa-plus"></i></button>
                 </div>
-                <div class="col-sm-3 align-self-center" >
+                <div class="col-lg-3 align-self-center">
                   <h6>Razem</h6>
-                  <span style="color: green; font-weight: bold;font-size: large">{{item.product.price*item.quantity|currency:"PLN"}}
+                  <span
+                    style="color: green; font-weight: bold;font-size: large">{{item.product.price * item.quantity|currency:"PLN"}}
                     </span>
                 </div>
 
                 <p
                   style="text-align: right;font-size: small; margin-right: 5px; margin-bottom: 0; padding-bottom: 0;display: block;position: absolute;right: 10px ;top:0px">
                   <span>usuń</span>
-                  <button (click)="delete(item)" class="btn"><i class="fas fa-times"></i></button></p>
+                  <button (click)="delete(item)" class="btn"><i class="fas fa-times"></i></button>
+                </p>
               </div>
             </div>
           </div>
         </ng-container>
         <div class="col-12">
-          <div  class="pod" style="border: 3px solid #dddddd; text-align: right; padding-right: 10px">
+          <div class="pod" style="border: 3px solid #dddddd; text-align: right; padding-right: 10px">
 
-            <h5>DO ZAPŁATY  <span style="color: green">{{sumCart()|currency:"PLN"}}</span></h5>
+            <h5>DO ZAPŁATY <span style="color: green">{{sumCart()|currency:"PLN"}}</span></h5>
           </div>
         </div>
       </div>

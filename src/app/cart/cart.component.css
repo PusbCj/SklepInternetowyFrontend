@@ -1,13 +1,24 @@
 .squa{
-  background-color: #ecc34a;
   margin-bottom: 10px;
+  padding: 0;
 
 }
+.right-margin{
+  margin-right: 3px;
+  padding: 3px;
+  background-color: #ecc34a;
+}
 
-.squabl{
+.right-margin-fade{
+  padding: 3px;
+  margin-right: 3px;
   background-color: #bea147;
+}
+.squabl{
+  padding: 0;
   margin-bottom: 10px;
   color: #3B3B3B;
+
 }
 
 .squar{
@@ -17,14 +28,14 @@
 }
 .squar p{
   margin: 0;
-  padding-left: 10px;
+  padding-left: 0px;
   padding-top: 0;
   font-size: small;
   font-weight: bold;
 }
 .squar h6{
   margin: 0;
-  padding-left: 10px;
+  padding-left: 0px;
   padding-bottom: 0;
   font-weight: bold;
 }
@@ -85,6 +96,7 @@
   margin-bottom: 8px;
   background: white;
   transition: all 0.5s ease-in-out;
+  height: calc(100% - 8px);
 }
 
 .prod:hover{
@@ -116,3 +128,5 @@ input::-webkit-inner-spin-button {
 .pod{
   background: white;
 }
+
+

@@ -24,7 +24,7 @@
 
         <img src="{{path.url}}">
       </ng-container>
-      <input type="file" class="form-control-file" (change)="onFileSelected($event)"><br>
+      <input type="file" class="form-control-file" accept="image/*" (change)="onFileSelected($event)"><br>
 
       <p>Cena</p>
       <input type="text" [(ngModel)]="product.price"><br><br>
