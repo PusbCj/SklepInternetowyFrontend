@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Register} from '../models/Register.model';
 import {Observable} from 'rxjs';
 import {SERVER_API_URL} from '../app.constants';
-import {RegData} from "../models/RegData";
+import {RegData} from '../models/RegData';
 
 @Injectable({
   providedIn: 'root'
