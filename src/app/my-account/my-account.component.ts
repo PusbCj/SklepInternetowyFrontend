@@ -28,7 +28,7 @@ export class MyAccountComponent implements OnInit {
       lastName: ['', Validators.required],
       numberHouse: ['', Validators.required],
       postCode: ['', Validators.required],
-      street: ['', Validators.required]
+      street: ['', Validators.required],
     });
 
     this.changePassword = this.formBuilder.group({
