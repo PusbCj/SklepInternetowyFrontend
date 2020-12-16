@@ -12,38 +12,38 @@
           <div class="yourdate">
             <h6>TWOJE DANE<sup style="color: red;">*</sup></h6>
             <p>adres e-mail:</p>
-            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': (d.email.touched || d.email.dirty) && d.email.errors }" />
+            <input type="text" formControlName="email" class="form-control" placeholder="{{temp.email}}" [ngClass]="{ 'is-invalid': (d.email.touched || d.email.dirty) && d.email.errors }" />
             <div *ngIf="(d.email.touched || d.email.dirty) && d.email.errors" class="invalid-feedback">
               <div *ngIf="d.email.errors.required">Email jest wymagany</div>
               <div *ngIf="d.email.errors.email">Email jest nieprawidłowy</div>
             </div>
             <p>imię</p>
-            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': (d.firstName.touched || d.firstName.dirty) && d.firstName.errors }" />
-            <div *ngIf="(d.firstName.touched || d.firstName.dirty) && d.firstName.errors" class="invalid-feedback">
-              <div *ngIf="d.firstName.errors.required">Imię jest wymagane</div>
+            <input type="text" formControlName="firstname" class="form-control" placeholder="{{temp.firstname}}" [ngClass]="{ 'is-invalid': (d.firstname.touched || d.firstname.dirty) && d.firstname.errors }" />
+            <div *ngIf="(d.firstname.touched || d.firstname.dirty) && d.firstname.errors" class="invalid-feedback">
+              <div *ngIf="d.firstname.errors.required">Imię jest wymagane</div>
             </div>
             <p>nazwisko</p>
-            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': (d.lastName.touched || d.lastName.dirty) && d.lastName.errors }" />
-            <div *ngIf="(d.lastName.touched || d.lastName.dirty) && d.lastName.errors" class="invalid-feedback">
-              <div *ngIf="d.lastName.errors.required">Nazwisko jest wymagane</div>
+            <input type="text" formControlName="lastname" class="form-control" placeholder="{{temp.lastname}}" [ngClass]="{ 'is-invalid': (d.lastname.touched || d.lastname.dirty) && d.lastname.errors }" />
+            <div *ngIf="(d.lastname.touched || d.lastname.dirty) && d.lastname.errors" class="invalid-feedback">
+              <div *ngIf="d.lastname.errors.required">Nazwisko jest wymagane</div>
             </div>
             <p>ulica</p>
-            <input type="text" formControlName="street" class="form-control" [ngClass]="{ 'is-invalid': (d.street.touched || d.street.dirty) && d.street.errors }" />
+            <input type="text" formControlName="street" class="form-control" placeholder="{{temp.street}}" [ngClass]="{ 'is-invalid': (d.street.touched || d.street.dirty) && d.street.errors }" />
             <div *ngIf="(d.street.touched || d.street.dirty) && d.street.errors" class="invalid-feedback">
               <div *ngIf="d.street.errors.required">Ulica jest wymagana</div>
             </div>
             <p>numer domu</p>
-            <input type="text" formControlName="numberHouse" class="form-control" [ngClass]="{ 'is-invalid': (d.numberHouse.touched || d.numberHouse.dirty) && d.numberHouse.errors }" />
+            <input type="text" formControlName="numberHouse" class="form-control" placeholder="{{temp.numberHouse}}" [ngClass]="{ 'is-invalid': (d.numberHouse.touched || d.numberHouse.dirty) && d.numberHouse.errors }" />
             <div *ngIf="(d.numberHouse.touched || d.numberHouse.dirty) && d.numberHouse.errors" class="invalid-feedback">
               <div *ngIf="d.numberHouse.errors.required">Numer domu jest wymagany</div>
             </div>
             <p>miasto</p>
-            <input type="text" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': (d.city.touched || d.city.dirty) && d.city.errors }" />
+            <input type="text" formControlName="city" class="form-control" placeholder="{{temp.city}}" [ngClass]="{ 'is-invalid': (d.city.touched || d.city.dirty) && d.city.errors }" />
             <div *ngIf="(d.city.touched || d.city.dirty) && d.city.errors" class="invalid-feedback">
               <div *ngIf="d.city.errors.required">Miasto jest wymagane</div>
             </div>
             <p>kod pocztowy</p>
-            <input type="text" formControlName="postCode" class="form-control" [ngClass]="{ 'is-invalid': (d.postCode.touched || d.postCode.dirty) && d.postCode.errors }" />
+            <input type="text" formControlName="postCode" class="form-control" placeholder="{{temp.postCode}}" [ngClass]="{ 'is-invalid': (d.postCode.touched || d.postCode.dirty) && d.postCode.errors }" />
             <div *ngIf="(d.postCode.touched || d.postCode.dirty) && d.postCode.errors" class="invalid-feedback">
               <div *ngIf="d.postCode.errors.required">Kod pocztowy jest wymagany</div>
             </div>
@@ -55,7 +55,7 @@
             <br>
             <div class="row">
               <div class="col-12 text-center" style="margin-top: 20px">
-                <button *ngIf="!(d.email.errors || d.firstName.errors || d.lastName.errors ||
+                <button *ngIf="!(d.email.errors || d.firstname.errors || d.lastname.errors ||
                 d.street.errors || d.numberHouse.errors || d.city.errors || d.postCode.errors || d.currentPassword.errors); else disabled"
                 type="submit" class=" btn btn-custom btn-lg  " >ZAPISZ</button>
                 <ng-template #disabled>

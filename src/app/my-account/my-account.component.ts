@@ -5,6 +5,8 @@ import {ChangePWDService} from '../services/change-pwd.service';
 import {PWDData} from '../models/PWDData';
 import {ChangeUserDataService} from '../services/change-user-data.service';
 import {UserData} from '../models/UserData';
+import {SERVER_API_URL} from '../app.constants';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -16,16 +18,19 @@ export class MyAccountComponent implements OnInit {
   status = '';
   changeData: FormGroup;
   changePassword: FormGroup;
+  temp: UserData;
 
-  constructor(private formBuilder: FormBuilder, private messageService: MessageService, private changePWDService: ChangePWDService, private changeUserDataService: ChangeUserDataService) { }
+  constructor(private formBuilder: FormBuilder, private messageService: MessageService,
+              private changePWDService: ChangePWDService, private changeUserDataService: ChangeUserDataService,
+              private http: HttpClient) { }
 
   ngOnInit(): void {
     this.changeData = this.formBuilder.group({
       city: ['', [Validators.required]],
       currentPassword: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       numberHouse: ['', Validators.required],
       postCode: ['', Validators.required],
       street: ['', Validators.required],
@@ -40,6 +45,11 @@ export class MyAccountComponent implements OnInit {
       oldPassword: ['', [Validators.required]],
       passwordRepeat: ['', [Validators.required]],
     });
+
+    this.changeUserDataService.getUserData().subscribe(res => {
+      this.temp = res;
+    });
+    console.log(this.temp);
   }
 
   patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
