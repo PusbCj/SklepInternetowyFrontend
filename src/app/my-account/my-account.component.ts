@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {MessageService} from 'primeng/api';
+import {ChangePWDService} from '../services/change-pwd.service';
+import {PWDData} from '../models/PWDData';
+import {ChangeUserDataService} from '../services/change-user-data.service';
+import {UserData} from '../models/UserData';
+
 
 @Component({
   selector: 'app-my-account',
@@ -7,29 +13,31 @@ import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, 
   styleUrls: ['./my-account.component.css']
 })
 export class MyAccountComponent implements OnInit {
-changeData: FormGroup;
-changePassword: FormGroup;
+  status = '';
+  changeData: FormGroup;
+  changePassword: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private messageService: MessageService, private changePWDService: ChangePWDService, private changeUserDataService: ChangeUserDataService) { }
 
   ngOnInit(): void {
     this.changeData = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(4)]],
+      city: ['', [Validators.required]],
+      currentPassword: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      numberHouse: ['', Validators.required],
+      postCode: ['', Validators.required],
       street: ['', Validators.required],
-      houseNumber: ['', Validators.required],
-      nameAddress: ['', Validators.required],
-      postCode: ['', Validators.required]
     });
 
     this.changePassword = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(8),
+      newPassword: ['', [Validators.required, Validators.minLength(8),
         this.patternValidator(/\d/, { hasNumber: true }),
         this.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
         this.patternValidator(/[a-z]/, { hasSmallCase: true }),
         this.patternValidator(/[!@#$%^&*()_+={};'":|,.<>/?-]/, { hasSpecialCharacters: true })]],
+      oldPassword: ['', [Validators.required]],
       passwordRepeat: ['', [Validators.required]],
     });
   }
@@ -50,11 +58,28 @@ changePassword: FormGroup;
   // tslint:disable-next-line:typedef
   get p() { return this.changePassword.controls; }
 
-  changeUserData(UserData: FormGroup): void{
-
+  changeUserData(Data: FormGroup): void{
+    console.log(Data.value);
+    this.changeUserDataService.changeUserData(new UserData(Data.value.city, Data.value.currentPassword, Data.value.email,
+      Data.value.firstname, Data.value.lastname, Data.value.numberHouse, Data.value.postCode, Data.value.street)).subscribe(res => {
+      this.status = 'Dane zostały zmienione';
+      this.messageService.add({ severity: 'success', summary: 'Sukces', detail: 'Dane zostały zmienione.'});
+    }, res => {
+      console.log(res);
+      this.status = res.error.message;
+      this.messageService.add({severity: 'error', summary: 'Blad', detail: res.error.message});
+    });
   }
 
-  changeUserPassword(UserData: FormGroup): void{
-
+  changeUserPassword(UserPWD: FormGroup): void{
+    console.log(UserPWD.value);
+    this.changePWDService.changePassword(new PWDData(UserPWD.value.newPassword, UserPWD.value.oldPassword)).subscribe(res => {
+      this.status = 'Hasło zostało zmienione.';
+      this.messageService.add({ severity: 'success', summary: 'Sukces', detail: 'Hasło zostało zmienione.'});
+    }, res => {
+      console.log(res);
+      this.status = res.error.message;
+      this.messageService.add({severity: 'error', summary: 'Blad', detail: res.error.message});
+    });
   }
 }
