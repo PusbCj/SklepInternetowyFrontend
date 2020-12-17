@@ -18,16 +18,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { ActivateComponent } from './activate/activate.component';
-import { CategoryComponent } from './category/category.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { ProductViewComponent } from './product-view/product-view.component';
-import {PaginatorModule} from 'primeng/paginator';
-import {SliderModule} from 'primeng/slider';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { CartComponent } from './cart/cart.component';
-import {Galleria, GalleriaContent, GalleriaModule} from 'primeng/galleria';
-import {InputNumberModule} from 'primeng/inputnumber';
 import localPl from '@angular/common/locales/pl';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
 
@@ -42,10 +36,8 @@ import {AuthInterceptor} from './interceptor/auth.interceptor';
     FooterComponent,
     ContactComponent,
     ActivateComponent,
-    CategoryComponent,
     ForgotPasswordComponent,
     AddProductComponent,
-    ProductViewComponent,
     MyAccountComponent,
     CartComponent
   ],
@@ -57,11 +49,7 @@ import {AuthInterceptor} from './interceptor/auth.interceptor';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    PaginatorModule,
-    SliderModule,
-    GalleriaModule,
-    ReactiveFormsModule,
-    InputNumberModule
+    ReactiveFormsModule
   ],
   providers: [MessageService,
     {      provide: LocationStrategy, useClass: PathLocationStrategy},

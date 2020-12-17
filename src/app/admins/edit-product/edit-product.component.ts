@@ -1,23 +1,20 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {PhotoCaru} from '../../models/PhotoCaru.models';
+import {Product} from '../../models/Product.model';
+import {PhotoUrl} from '../../models/PhotoUrl.models';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductServiceService} from '../services/product-service.service';
-import {Product} from '../models/Product.model';
+import {ProductServiceService} from '../../services/product-service.service';
 import {Location} from '@angular/common';
-import {PhotoUrl} from '../models/PhotoUrl.models';
-import {PhotoCaru} from '../models/PhotoCaru.models';
-import {CartServiceService} from '../services/cart-service.service';
-import {ItemShopCart} from '../models/ItemShopCar.model';
+import {CartServiceService} from '../../services/cart-service.service';
 import {MessageService} from 'primeng/api';
-
+import {ItemShopCart} from '../../models/ItemShopCar.model';
 
 @Component({
-  selector: 'app-product-view',
-  templateUrl: './product-view.component.html',
-  styleUrls: ['./product-view.component.css']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.css']
 })
-export class ProductViewComponent implements OnInit {
-
-
+export class EditProductComponent implements OnInit {
   quantity = 1;
   images: PhotoCaru[];
   product: Product;
@@ -51,9 +48,7 @@ export class ProductViewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
               private router: Router, private location: Location, private cartService: CartServiceService,
-              private messageService: MessageService ) {
-    this.product = new Product();
-  }
+              private messageService: MessageService ) { }
 
   ngOnInit(): void {
 

@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {Product} from '../models/Product.model';
 import {ProductServiceService} from '../services/product-service.service';
-import {filter} from 'rxjs/operators';
 import {CategoryService} from '../services/category.service';
-
+import {Product} from '../models/Product.model';
+import {filter} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  selector: 'app-category-modul',
+  templateUrl: './category-modul.component.html',
+  styleUrls: ['./category-modul.component.css']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryModulComponent implements OnInit {
 
   sortPro = 'price,asc';
   age = null;
@@ -21,13 +20,13 @@ export class CategoryComponent implements OnInit {
   brand = '';
   totalElements = 0;
   titleCategory = '';
+  catID = '';
+  listProduct: Array<Product>;
+
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
               private router: Router, private categoryService: CategoryService) {
     this.listProduct = new Array<Product>();
   }
-  catID = '';
-  listProduct: Array<Product>;
-
   ngOnInit(): void {
     this.catID = this.route.snapshot.paramMap.get('id');
     this.getAllProducts();
@@ -53,7 +52,7 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-   getAllProducts(): void {
+  getAllProducts(): void {
     const age2 = this.age === null ? 100 : this.age;
     this.productService.getAllProductsByParameters(this.catID, age2,
       this.sortPro, this.pageNumber, this.pageSize, this.rangeValues[1], this.rangeValues[0], this.brand)

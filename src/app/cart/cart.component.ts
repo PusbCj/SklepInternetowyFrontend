@@ -44,6 +44,7 @@ export class CartComponent implements OnInit {
 
   private updateCart(): void {
     this.cartService.updateCart(this.cart).subscribe(res => {
+      sessionStorage.setItem('shopcart', JSON.stringify(res));
       if (res.itemShopCartList.length != null) {
         sessionStorage.setItem('items', res.itemShopCartList.length);
       } else {
