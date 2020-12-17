@@ -13,6 +13,10 @@ export class ChangeUserDataService {
   }
 
   changeUserData(changeUserData: UserData): Observable<any> {
-    return this.http.post(SERVER_API_URL + 'api/v1/user/changeuserdate', changeUserData);
+    return this.http.patch(SERVER_API_URL + 'api/v1/user/changeuserdate', changeUserData);
+  }
+
+  getUserData(): Observable<any> {
+    return this.http.get(SERVER_API_URL + 'api/v1/user/getuserdate');
   }
 }
