@@ -79,6 +79,9 @@ export class MyAccountComponent implements OnInit {
       this.status = res.error.message;
       this.messageService.add({severity: 'error', summary: 'Blad', detail: res.error.message});
     });
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   }
 
   changeUserPassword(UserPWD: FormGroup): void{
