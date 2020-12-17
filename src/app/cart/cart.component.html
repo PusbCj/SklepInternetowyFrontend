@@ -61,7 +61,7 @@
 
         <ng-container *ngFor="let item of cart.itemShopCartList">
           <div class="col-sm-6 col-lg-12">
-            <div class="prod">
+            <div class="prod" (mouseleave)="updateIfNecessary()">
 
               <div class="row">
 
@@ -80,9 +80,9 @@
                     </span>
                 </div>
                 <div class="col-lg-2 align-self-center">
-                  <button class="btn btnico"><i class="fas fa-minus"></i></button>
+                  <button class="btn btnico" (click)="minus(item)"><i class="fas fa-minus"></i></button>
                   <input value="{{item.quantity}}" type="number" style="height: 30px;width: 30px">
-                  <button class="btn btnico"><i class="fas fa-plus"></i></button>
+                  <button class="btn btnico" (click)="plus(item)"><i class="fas fa-plus"></i></button>
                 </div>
                 <div class="col-lg-3 align-self-center">
                   <h6>Razem</h6>

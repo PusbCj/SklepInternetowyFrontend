@@ -7,10 +7,8 @@ import {StartComponent} from '../start/start.component';
 import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
 import {ContactComponent} from '../contact/contact.component';
 import {ActivateComponent} from '../activate/activate.component';
-import {CategoryComponent} from '../category/category.component';
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component';
 import {AddProductComponent} from '../add-product/add-product.component';
-import {ProductViewComponent} from '../product-view/product-view.component';
 import {CartComponent} from '../cart/cart.component';
 import {MyAccountComponent} from '../my-account/my-account.component';
 
@@ -21,13 +19,14 @@ const routes: Routes = [
   {path : 'register', component: RegisterComponent},
   {path : 'contact', component: ContactComponent},
   {path : 'activate', component: ActivateComponent},
-  {path : 'category/:id', component: CategoryComponent},
-  {path : 'product/:id', component: ProductViewComponent},
   {path : 'cart', component: CartComponent},
   {path : 'myaccount', component: MyAccountComponent},
   {path : 'addproduct', component: AddProductComponent},
   {path : 'forgotPassword', component: ForgotPasswordComponent},
   {path: '', redirectTo: 'start', pathMatch: 'full' },
+  { path: 'admin', loadChildren: () => import('../admins/admins.module').then(m => m.AdminsModule) },
+  { path: 'product', loadChildren: () => import('../products/products.module').then(m => m.ProductsModule) },
+  { path: 'category', loadChildren: () => import('../category-modul/category-modul.module').then(m => m.CategoryModulModule) },
   {path: '**', component: PageNotFoundComponent}
 ];
 
