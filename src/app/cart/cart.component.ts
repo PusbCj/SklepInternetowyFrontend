@@ -23,7 +23,7 @@ export class CartComponent implements OnInit {
     this.getCart();
   }
 
-  private getCart() {
+  private getCart(): void {
     this.cartService.getCurrentCart().subscribe(res => {
       this.cart = res;
       if (res.itemShopCartList.length != null) {
