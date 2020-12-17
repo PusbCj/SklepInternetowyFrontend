@@ -25,16 +25,7 @@ export class MyAccountComponent implements OnInit {
               private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.changeData = this.formBuilder.group({
-      city: ['', [Validators.required]],
-      currentPassword: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      numberHouse: ['', Validators.required],
-      postCode: ['', Validators.required],
-      street: ['', Validators.required],
-    });
+    this.clearChangeData();
 
     this.changePassword = this.formBuilder.group({
       newPassword: ['', [Validators.required, Validators.minLength(8),
@@ -46,10 +37,27 @@ export class MyAccountComponent implements OnInit {
       passwordRepeat: ['', [Validators.required]],
     });
 
+    this.getUserFromServer();
+    console.log(this.temp);
+  }
+
+  clearChangeData(): void{
+    this.changeData = this.formBuilder.group({
+      city: ['', [Validators.required]],
+      currentPassword: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      numberHouse: ['', Validators.required],
+      postCode: ['', Validators.required],
+      street: ['', Validators.required],
+    });
+  }
+
+  getUserFromServer(): void {
     this.changeUserDataService.getUserData().subscribe(res => {
       this.temp = res;
     });
-    console.log(this.temp);
   }
 
   patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
@@ -79,6 +87,7 @@ export class MyAccountComponent implements OnInit {
       this.status = res.error.message;
       this.messageService.add({severity: 'error', summary: 'Blad', detail: res.error.message});
     });
+    this.clearChangeData();
   }
 
   changeUserPassword(UserPWD: FormGroup): void{
