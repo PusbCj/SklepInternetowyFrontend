@@ -5,6 +5,7 @@ import { CategoryModulRoutingModule } from './category-modul-routing.module';
 import { CategoryModulComponent } from './category-modul.component';
 import {SliderModule} from 'primeng/slider';
 import {PaginatorModule} from 'primeng/paginator';
+import {MultiSelectModule} from 'primeng/multiselect';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {PaginatorModule} from 'primeng/paginator';
     CommonModule,
     CategoryModulRoutingModule,
     SliderModule,
-    PaginatorModule
+    PaginatorModule,
+    MultiSelectModule
   ]
 })
 export class CategoryModulModule { }
