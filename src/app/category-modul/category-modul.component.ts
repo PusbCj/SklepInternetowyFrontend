@@ -4,12 +4,18 @@ import {ProductServiceService} from '../services/product-service.service';
 import {CategoryService} from '../services/category.service';
 import {Product} from '../models/Product.model';
 import {filter} from 'rxjs/operators';
+import {MultiSelectModule} from 'primeng/multiselect';
+
+interface Brand {
+  name: string;
+}
 
 @Component({
   selector: 'app-category-modul',
   templateUrl: './category-modul.component.html',
   styleUrls: ['./category-modul.component.css']
 })
+
 export class CategoryModulComponent implements OnInit {
 
   sortPro = 'price,asc';
@@ -22,12 +28,13 @@ export class CategoryModulComponent implements OnInit {
   titleCategory = '';
   catID = '';
   listProduct: Array<Product>;
-  listBrand: string[];
+  listBrand: Array<Brand>;
+  selectedBrand: Array<Brand>;
 
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
               private router: Router, private categoryService: CategoryService) {
     this.listProduct = new Array<Product>();
-    this.listBrand = new Array<string>();
+    this.listBrand = new Array<Brand>();
   }
   ngOnInit(): void {
     this.catID = this.route.snapshot.paramMap.get('id');
@@ -45,12 +52,11 @@ export class CategoryModulComponent implements OnInit {
         this.getAllProducts();
         this.getBrandList();
       });
-    console.log(this.listBrand);
   }
 
   getCategory(): void{
 
-    this.categoryService.getById(Number(this.catID)).subscribe(res =>{
+    this.categoryService.getById(Number(this.catID)).subscribe(res => {
       this.titleCategory = res.name;
     }, error => {
       this.titleCategory = '';
@@ -68,9 +74,13 @@ export class CategoryModulComponent implements OnInit {
   }
 
   getBrandList(): void{
-   this.categoryService.getCategoryBrand(this.catID).subscribe(res => {
-     this.listBrand = res;
-   });
+    this.categoryService.getCategoryBrand(this.catID).subscribe(res => {
+      this.listBrand.push(res.filter(x => x != null).map(x => {
+        const y: Brand = {name: x};
+        console.log(this.listBrand);
+        return y;
+      }));
+    });
   }
 
   paginate($event: any): void {
