@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('token');
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('admin');
     this.messageService.add({ severity: 'info', summary: 'Informacja', detail: 'Wylogowano'});
     this.router.navigate(['/']);
   }
@@ -33,5 +34,13 @@ export class MenuComponent implements OnInit {
       return String(0);
     }
     return sessionStorage.getItem('items');
+  }
+
+  isAdmin() {
+    if (sessionStorage.getItem('admin') === 'true'){
+      return true;
+    }else {
+      return false;
+    }
   }
 }

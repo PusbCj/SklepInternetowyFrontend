@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(loginForm: NgForm): void{
-    console.log(loginForm.value);
     this.signinService.signin(new UsernamePassword(loginForm.value.username, loginForm.value.password)).subscribe((resp) => {
         sessionStorage.setItem('user', loginForm.value.username);
         this.status = 'sukces';
@@ -30,6 +29,7 @@ export class LoginComponent implements OnInit {
         this.messageService.add({ severity: 'error', summary: 'Blad', detail: 'Nie udało sie zalogować'});
         sessionStorage.removeItem('user');
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('admin');
       }
     );
   }

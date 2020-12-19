@@ -4,7 +4,6 @@ import {ProductServiceService} from '../services/product-service.service';
 import {CategoryService} from '../services/category.service';
 import {Product} from '../models/Product.model';
 import {filter} from 'rxjs/operators';
-import {MultiSelectModule} from 'primeng/multiselect';
 
 interface Brand {
   name: string;

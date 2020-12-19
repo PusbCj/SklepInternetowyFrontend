@@ -33,7 +33,9 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" >
+      <span *ngIf="isAdmin()">
       <button  class="btn btn-outline my-2 my-sm-0" type="submit" routerLink="/admin"><span><i class="fas fa-hammer"></i><p class="but">Admin</p></span></button>
+     </span>
       <button class="btn btn-outline my-2 my-sm-0" type="submit" routerLink="/cart"><span><i class="fas fa-shopping-basket"><span style="font-size: small;">
           {{items()}}</span></i><p class="but">Koszyk</p></span></button>
       <span *ngIf="isNotLogged()">
