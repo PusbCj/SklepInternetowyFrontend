@@ -22,15 +22,18 @@ export class CategoryModulComponent implements OnInit {
   titleCategory = '';
   catID = '';
   listProduct: Array<Product>;
+  listBrand: string[];
 
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
               private router: Router, private categoryService: CategoryService) {
     this.listProduct = new Array<Product>();
+    this.listBrand = new Array<string>();
   }
   ngOnInit(): void {
     this.catID = this.route.snapshot.paramMap.get('id');
     this.getAllProducts();
     this.getCategory();
+    this.getBrandList();
 
 
 
@@ -40,7 +43,9 @@ export class CategoryModulComponent implements OnInit {
         this.catID = this.route.snapshot.paramMap.get('id');
         this.getCategory();
         this.getAllProducts();
+        this.getBrandList();
       });
+    console.log(this.listBrand);
   }
 
   getCategory(): void{
@@ -60,6 +65,12 @@ export class CategoryModulComponent implements OnInit {
         this.listProduct = res.content;
         this.totalElements = res.totalElements;
       }, error => {}) ;
+  }
+
+  getBrandList(): void{
+   this.categoryService.getCategoryBrand(this.catID).subscribe(res => {
+     this.listBrand = res;
+   });
   }
 
   paginate($event: any): void {
