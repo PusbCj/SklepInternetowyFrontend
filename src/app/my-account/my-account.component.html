@@ -28,33 +28,35 @@
             <input type="text" formControlName="city" class="form-control" placeholder="{{temp.city}}"/>
             <p>kod pocztowy</p>
             <input type="text" formControlName="postCode" class="form-control" placeholder="{{temp.postCode}}"/>
-            <p>aktualne hasło</p>
-            <input type="password" formControlName="currentPassword" class="form-control" [ngClass]="{ 'is-invalid':
-            ((d.currentPassword.touched || d.currentPassword.dirty) && d.currentPassword.errors) ||
-            ((d.email.touched || d.email.dirty) && d.currentPassword.errors) ||
-            ((d.firstname.touched || d.firstname.dirty) && d.currentPassword.errors) ||
-            ((d.lastname.touched || d.lastname.dirty) && d.currentPassword.errors) ||
-            ((d.street.touched || d.street.dirty) && d.currentPassword.errors) ||
-            ((d.numberHouse.touched || d.numberHouse.dirty) && d.currentPassword.errors) ||
-            ((d.city.touched || d.city.dirty) && d.currentPassword.errors)
-            }" />
-            <div *ngIf="((d.currentPassword.touched || d.currentPassword.dirty) && d.currentPassword.errors) ||
-            ((d.email.touched || d.email.dirty) && d.currentPassword.errors) ||
-            ((d.firstname.touched || d.firstname.dirty) && d.currentPassword.errors) ||
-            ((d.lastname.touched || d.lastname.dirty) && d.currentPassword.errors) ||
-            ((d.street.touched || d.street.dirty) && d.currentPassword.errors) ||
-            ((d.numberHouse.touched || d.numberHouse.dirty) && d.currentPassword.errors) ||
-            ((d.city.touched || d.city.dirty) && d.currentPassword.errors)" class="invalid-feedback">
-              <div *ngIf="d.currentPassword.errors.required">W celu zmiany danych należy podać aktualne hasło</div>
-            </div>
-            <br>
+
             <div class="row">
               <div class="col-12 text-center" style="margin-top: 20px">
-                <button *ngIf="(!(d.email.errors && d.firstname.errors && d.lastname.errors &&
-                d.street.errors && d.numberHouse.errors && d.city.errors && d.postCode.errors) && !d.currentPassword.errors); else disabled"
-                type="submit" class=" btn btn-custom btn-lg  " >ZAPISZ</button>
+
                 <ng-template #disabled>
                   <button  type="submit" class=" btn btn-custom btn-lg  " disabled>ZAPISZ</button>
+                </ng-template>
+                <button *ngIf="!(d.email.errors && d.firstname.errors && d.lastname.errors &&
+                        d.street.errors && d.numberHouse.errors && d.city.errors && d.postCode.errors); else disabled"
+                        type="button" class="btn btn-custom btn-lg" (click)="modal(content)">ZAPISZ</button>
+                <ng-template #content let-modal>
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Zaktualizuj dane</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="currentPassword">W celu zatweierdzenia zmian wprowadź hasło</label>
+                    <div class="input-group">
+                      <input ngbAutofocus type="password" formControlName="currentPassword" id="currentPassword" class="form-control" [ngClass]="{ 'is-invalid':
+                      ((d.currentPassword.touched || d.currentPassword.dirty) && d.currentPassword.errors)}" />
+                      <div class="input-group-append">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button *ngIf="(!d.currentPassword.errors); else disabled" type="submit" class=" btn btn-custom btn-lg  " (click)="changeUserData(changeData)" (click)="modal.close()" >ZAPISZ</button>
+                  </div>
                 </ng-template>
                 <p></p>
               </div>
