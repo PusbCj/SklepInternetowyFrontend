@@ -24,6 +24,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { CartComponent } from './cart/cart.component';
 import localPl from '@angular/common/locales/pl';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {AuthInterceptor} from './interceptor/auth.interceptor';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [MessageService,
     {      provide: LocationStrategy, useClass: PathLocationStrategy},
