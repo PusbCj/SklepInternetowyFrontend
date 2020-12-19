@@ -16,7 +16,7 @@
       <div class="divider">
         <p>Marka:</p>
         <input type="text" class="form-control " placeholder="Szukaj" [(ngModel)]="brand">
-        <p-multiSelect [options]="listBrand" [(ngModel)]="selectedBrand" display="chip"></p-multiSelect>
+        <p-multiSelect [options]="listBrand" [(ngModel)]="selectedBrand" optionLabel="name" display="chip"></p-multiSelect>
         <p>Wiek dziecka:</p>
         <input type="text" class="form-control" placeholder="Szukaj" [(ngModel)]="age">
       </div>

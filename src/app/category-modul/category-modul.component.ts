@@ -75,11 +75,10 @@ export class CategoryModulComponent implements OnInit {
 
   getBrandList(): void{
     this.categoryService.getCategoryBrand(this.catID).subscribe(res => {
-      this.listBrand.push(res.filter(x => x != null).map(x => {
+      this.listBrand = res.filter(x => x != null).map(x => {
         const y: Brand = {name: x};
-        console.log(this.listBrand);
         return y;
-      }));
+      });
     });
   }
 
