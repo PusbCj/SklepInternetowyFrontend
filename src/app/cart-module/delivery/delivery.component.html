@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-3 d-none d-md-block">
+      <div class="row">
+        <div class=" col-4 col-lg-12 squa">
+          <div class="right-margin-fade">
+            <div class="row squar" style="height: 100px">
+
+              <div class="col-10 align-self-center">
+                <div>
+                  <p>KROK1</p>
+                  <h6>KOSZYK</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4 col-lg-12 squabl">
+          <div class="right-margin">
+            <div class="row squar" style="height: 100px">
+
+              <div class="col-10 align-self-center">
+                <div>
+                  <p>KROK2</p>
+                  <h6>DOSTAWA</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4 col-lg-12 squabl">
+          <div class="right-margin-fade">
+            <div class="row squar" style="height: 100px">
+
+              <div class="col-md-10 align-self-center">
+                <div>
+                  <p>KROK3</p>
+                  <h6>PODSUMOWANIE</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="col-12 col-lg-9">
+      <div class="row">
+
+
+        <div class="col-12">
+          <div class="date" style="border: 3px solid #dddddd;  padding: 10px">
+
+            <h5 style="text-align: center">ADRES DO WYSYŁKI </h5>
+            <div class="row">
+              <h5 class="col-2 offset-3">imię</h5>
+              <input type="text" formControlName="firstname" class="form-control col-4 " placeholder=""/>
+            </div>
+            <div class="row">
+              <h5 class="col-2 offset-3">nazwisko</h5>
+              <input type="text" formControlName="lastname" class="form-control col-4 " placeholder=""/>
+            </div>
+            <div class="row">
+              <h5 class="col-2 offset-3">Ulica</h5>
+              <input type="text" formControlName="street" class="form-control col-4 " placeholder=""/>
+            </div>
+            <div class="row">
+              <h5 class="col-2 offset-3">Nr domu</h5>
+              <input type="text" formControlName="houseNumber" class="form-control col-4 " placeholder=""/>
+            </div>
+            <div class="row">
+              <h5 class="col-2 offset-3">Miasto</h5>
+              <input type="text" formControlName="city" class="form-control col-4 " placeholder=""/>
+            </div>
+            <div class="row">
+              <h5 class="col-2 offset-3">Kod pocztowy</h5>
+              <input type="text" formControlName="postCode" class="form-control col-4 " placeholder=""/>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="date" style="border: 3px solid #dddddd;  padding: 10px;text-align: center">
+            <h5 style="text-align: center">METODA WYSYŁKI</h5>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Poczta Polska Przedpłata +10zł
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <label class="form-check-label" for="exampleRadios2">
+                Poczta Polska Pobranie +20zł
+              </label>
+            </div>
+            <div class="form-check disabled">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
+              <label class="form-check-label" for="exampleRadios3">
+                Kurier Dpd Pobranie +20zł
+              </label>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12" style="text-align: right; margin-top: 10px; padding-right: 13px">
+          <button type="button" class="btn btn-success" routerLink="./delivery">Dalej</button>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

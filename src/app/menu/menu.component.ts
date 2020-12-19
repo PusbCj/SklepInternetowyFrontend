@@ -36,8 +36,8 @@ export class MenuComponent implements OnInit {
     return sessionStorage.getItem('items');
   }
 
-  isAdmin() {
-    if (sessionStorage.getItem('admin') === 'true'){
+  isAdmin(): boolean {
+    if (sessionStorage.getItem('admin')){
       return true;
     }else {
       return false;

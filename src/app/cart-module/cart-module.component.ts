@@ -1,19 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {Product} from '../models/Product.model';
+import { Component, OnInit } from '@angular/core';
 import {CartServiceService} from '../services/cart-service.service';
-import {ShopCart} from '../models/ShopCart.model';
+import {Product} from '../models/Product.model';
 import {ItemShopCart} from '../models/ItemShopCar.model';
+import {ShopCart} from '../models/ShopCart.model';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-cart-module',
+  templateUrl: './cart-module.component.html',
+  styleUrls: ['./cart-module.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartModuleComponent implements OnInit {
+
   listproduct: Array<Product>;
   cart: ShopCart;
   change = false;
-
 
   constructor(private cartService: CartServiceService) {
     this.listproduct = new Array<Product>();

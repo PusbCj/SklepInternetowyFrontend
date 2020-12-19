@@ -13,7 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {LocationStrategy, PathLocationStrategy, registerLocaleData} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing/app-routing.module';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
@@ -21,7 +21,6 @@ import { ActivateComponent } from './activate/activate.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { MyAccountComponent } from './my-account/my-account.component';
-import { CartComponent } from './cart/cart.component';
 import localPl from '@angular/common/locales/pl';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -39,8 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ActivateComponent,
     ForgotPasswordComponent,
     AddProductComponent,
-    MyAccountComponent,
-    CartComponent
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,
