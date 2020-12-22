@@ -5,6 +5,7 @@ import {CategoryService} from '../services/category.service';
 import {Product} from '../models/Product.model';
 import {filter} from 'rxjs/operators';
 import {PrimeNGConfig} from 'primeng/api';
+import {ProductCategoryAge} from '../models/ProductCategoryAge';
 
 interface Brand {
   name: string;
@@ -19,7 +20,7 @@ interface Brand {
 export class CategoryModulComponent implements OnInit {
 
   sortPro = 'price,asc';
-  age = null;
+  age = '';
   pageSize = 10;
   pageNumber = 0;
   rangeValues: number[] = [0, 500];
@@ -30,31 +31,35 @@ export class CategoryModulComponent implements OnInit {
   listProduct: Array<Product>;
   listBrand: Array<Brand>;
   selectedBrand: Array<Brand>;
-  selectedAge: string[] = [];
+  listAge: Array<ProductCategoryAge>;
+  selectedAge: Array<ProductCategoryAge>;
 
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
               private router: Router, private categoryService: CategoryService,
               private primengConfig: PrimeNGConfig ) {
     this.listProduct = new Array<Product>();
     this.listBrand = new Array<Brand>();
+    this.selectedBrand = new Array<Brand>();
+    this.listAge = new Array<ProductCategoryAge>();
+    this.selectedAge = new Array<ProductCategoryAge>();
   }
   ngOnInit(): void {
+    this.init();
+
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+       this.init();
+      });
+  }
+
+  init(): void{
     this.catID = this.route.snapshot.paramMap.get('id');
     this.getAllProducts();
     this.getCategory();
     this.getBrandList();
     this.primengConfig.ripple = true;
-
-
-
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.catID = this.route.snapshot.paramMap.get('id');
-        this.getCategory();
-        this.getAllProducts();
-        this.getBrandList();
-      });
+    this.getAgeList();
   }
 
   getCategory(): void{
@@ -67,11 +72,9 @@ export class CategoryModulComponent implements OnInit {
   }
 
   getAllProducts(): void {
-    const age2 = this.age === null ? 100 : this.age;
-    if (this.selectedBrand != null && this.selectedBrand.length > 0) {
-      this.brand = this.selectedBrand.map(bran => '&brands=' + bran.name).join('');
-    }
-    this.productService.getAllProductsByParameters(this.catID, age2,
+    this.brand = this.selectedBrand.map(bran => '&brands=' + bran.name).join('');
+    this.age = this.selectedAge.map( age => '&ages=' + age.id).join('');
+    this.productService.getAllProductsByParameters(this.catID, this.age,
       this.sortPro, this.pageNumber, this.pageSize, this.rangeValues[1], this.rangeValues[0], this.brand)
       .subscribe(res => {
         this.listProduct = res.content;
@@ -85,6 +88,11 @@ export class CategoryModulComponent implements OnInit {
         const y: Brand = {name: x};
         return y;
       });
+    });
+  }
+  getAgeList(): void{
+    this.productService.getAllAgeCategories().subscribe( res => {
+      this.listAge = res.sort((a, b) => a.id - b.id);
     });
   }
 
