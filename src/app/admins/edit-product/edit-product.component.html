@@ -35,9 +35,9 @@
         <div class="row">
           <div class="col-sm-12">
             <h3 style="padding-top: 5px">
-              {{product.name}}</h3>
+              {{product?.name}}</h3>
             <h5 style="padding-top: 15px; padding-left: 10px"> &nbsp;CENA &nbsp;&nbsp;&nbsp;
-              <span style="color: green; font-size: xx-large">{{product.price|currency : 'PLN'}} <span
+              <span style="color: green; font-size: xx-large">{{product?.price|currency : 'PLN'}} <span
                 style="font-size: large">z VAT</span></span></h5>
 
             <p class="dostawa"><i class="fas fa-truck"></i> Darmowa dostawa od 200zł</p>
@@ -71,6 +71,16 @@
 
     <input  style="background: none; border: 1px solid black; border-radius: 4px; font-size: larger" type="text" [(ngModel)]="product.price">
 
+      <p>Kategoria</p>
+      <ng-container *ngFor="let cat of categoryList">
+        <div>
+        <p-radioButton name="groupname" [value]="cat.id" [label]="cat.name" [(ngModel)]="product.category.id"></p-radioButton>
+        </div>
+      </ng-container>
+      <p>Grupy wiekowe</p>
+      <p-multiSelect [options]="listAge" [(ngModel)]="product.productCategoryAgeList"
+                     optionLabel="name" [virtualScroll]="true" itemSize="30"
+                     display="chip" placeholder="Wybierz" ></p-multiSelect>
     </div>
   </div>
   <div class="row" style="margin-top: 40px">

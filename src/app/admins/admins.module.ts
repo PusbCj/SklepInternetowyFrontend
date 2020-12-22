@@ -7,6 +7,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import {FormsModule} from '@angular/forms';
 import {GalleriaModule} from 'primeng/galleria';
 import {EditorModule} from 'primeng/editor';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {MultiSelectModule} from 'primeng/multiselect';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import {EditorModule} from 'primeng/editor';
     AdminsRoutingModule,
     FormsModule,
     GalleriaModule,
-    EditorModule
+    EditorModule,
+    RadioButtonModule,
+    MultiSelectModule
   ]
 })
 export class AdminsModule { }

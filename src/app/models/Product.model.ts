@@ -1,5 +1,6 @@
 import {Category} from './Category.model';
 import {PhotoUrl} from './PhotoUrl.models';
+import {ProductCategoryAge} from './ProductCategoryAge';
 
 
 export class Product {
@@ -10,6 +11,7 @@ export class Product {
   id?: number;
   name?: string;
   photoUrl?: Array<PhotoUrl>;
+  productCategoryAgeList?: Array<ProductCategoryAge>;
   quantity?: number;
   quantityAvailable?: number;
   price?: number;

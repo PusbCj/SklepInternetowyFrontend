@@ -8,6 +8,9 @@ import {Location} from '@angular/common';
 import {CartServiceService} from '../../services/cart-service.service';
 import {MessageService} from 'primeng/api';
 import {ItemShopCart} from '../../models/ItemShopCar.model';
+import {CategoryService} from '../../services/category.service';
+import {Category} from '../../models/Category.model';
+import {ProductCategoryAge} from '../../models/ProductCategoryAge';
 
 @Component({
   selector: 'app-edit-product',
@@ -23,6 +26,8 @@ export class EditProductComponent implements OnInit {
   displayBasic = false;
   activeIndex = 0;
   activeId = 0;
+  categoryList: Array<Category> = new Array<Category>();
+  listAge: Array<ProductCategoryAge>;
 
 
   responsiveOptions: any[] = [
@@ -48,11 +53,15 @@ export class EditProductComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
               private router: Router, private location: Location, private cartService: CartServiceService,
-              private messageService: MessageService ) { }
+              private messageService: MessageService, private categoryService: CategoryService ) {
+    this.product = new Product();
+  }
 
   ngOnInit(): void {
 
     this.prodID = this.route.snapshot.paramMap.get('id');
+    this.getAllCat();
+    this.getAgeList();
     this.productService.getProduct(this.prodID).subscribe(res => {
       this.product = res;
       this.productUrlBig = res.photoUrl[0];
@@ -65,6 +74,11 @@ export class EditProductComponent implements OnInit {
         return phot;
       });
     }, res => this.router.navigate(['/pagenotfound']));
+  }
+  getAllCat(): void {
+    this.categoryService.getAllCategory().subscribe( res => {
+      this.categoryList = res;
+    });
   }
 
   changePhoto(id: number): void {
@@ -90,19 +104,11 @@ export class EditProductComponent implements OnInit {
   }
 
   addToCart(): void {
-    const cartItem = new ItemShopCart();
-    cartItem.product = this.product;
-    cartItem.quantity = this.quantity;
-    this.cartService.addProduct(cartItem).subscribe(res => {
-      this.messageService.add({ severity: 'success', summary: 'Sukces', detail: 'Podano produkt do koszyka'});
-      if ( res.itemShopCartList.length != null) {
-        sessionStorage.setItem('items', res.itemShopCartList.length);
-      }else{
-        sessionStorage.setItem('items', String(0));
-      }
-    }, error => {
-      this.messageService.add({ severity: 'error', summary: 'bład', detail: 'Nie udało się dodać produktu do koszyka'});
-    });
   }
 
+  getAgeList(): void{
+    this.productService.getAllAgeCategories().subscribe( res => {
+      this.listAge = res.sort((a, b) => a.id - b.id);
+    });
+  }
 }

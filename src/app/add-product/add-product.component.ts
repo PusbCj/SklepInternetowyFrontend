@@ -36,15 +36,17 @@ export class AddProductComponent implements OnInit {
 
   onFileSelected(event): void {
     this.selectedFile = event.target.files[0];
-    this.productService.addFile(this.selectedFile).subscribe(res => {
-      this.pathFile = res;
-      const photo = new PhotoUrl();
-      photo.url = res;
-      this.pathFiles.push(photo);
-      console.log(this.pathFiles);
-    }, error => {
-      console.log(error);
-    });
+    if (this.selectedFile.type.startsWith('image')) {
+      this.productService.addFile(this.selectedFile).subscribe(res => {
+        this.pathFile = res;
+        const photo = new PhotoUrl();
+        photo.url = res;
+        this.pathFiles.push(photo);
+      }, error => {
+      });
+    }else{
+      this.messageService.add({severity: 'error', summary: 'bład', detail: 'Plik nie jest zdjeciem'});
+    }
   }
 
   saveProduct(): void {
