@@ -4,6 +4,7 @@ import {ProductServiceService} from '../services/product-service.service';
 import {CategoryService} from '../services/category.service';
 import {Product} from '../models/Product.model';
 import {filter} from 'rxjs/operators';
+import {PrimeNGConfig} from 'primeng/api';
 
 interface Brand {
   name: string;
@@ -29,9 +30,11 @@ export class CategoryModulComponent implements OnInit {
   listProduct: Array<Product>;
   listBrand: Array<Brand>;
   selectedBrand: Array<Brand>;
+  selectedAge: string[] = [];
 
   constructor(private route: ActivatedRoute, private productService: ProductServiceService,
-              private router: Router, private categoryService: CategoryService) {
+              private router: Router, private categoryService: CategoryService,
+              private primengConfig: PrimeNGConfig ) {
     this.listProduct = new Array<Product>();
     this.listBrand = new Array<Brand>();
   }
@@ -40,6 +43,7 @@ export class CategoryModulComponent implements OnInit {
     this.getAllProducts();
     this.getCategory();
     this.getBrandList();
+    this.primengConfig.ripple = true;
 
 
 
@@ -64,6 +68,9 @@ export class CategoryModulComponent implements OnInit {
 
   getAllProducts(): void {
     const age2 = this.age === null ? 100 : this.age;
+    if (this.selectedBrand != null && this.selectedBrand.length > 0) {
+      this.brand = this.selectedBrand.map(bran => '&brands=' + bran.name).join('');
+    }
     this.productService.getAllProductsByParameters(this.catID, age2,
       this.sortPro, this.pageNumber, this.pageSize, this.rangeValues[1], this.rangeValues[0], this.brand)
       .subscribe(res => {

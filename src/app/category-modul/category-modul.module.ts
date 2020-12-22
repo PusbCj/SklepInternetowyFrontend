@@ -6,6 +6,9 @@ import { CategoryModulComponent } from './category-modul.component';
 import {SliderModule} from 'primeng/slider';
 import {PaginatorModule} from 'primeng/paginator';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {ChipsModule} from 'primeng/chips';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 @NgModule({
@@ -15,7 +18,9 @@ import {MultiSelectModule} from 'primeng/multiselect';
     CategoryModulRoutingModule,
     SliderModule,
     PaginatorModule,
-    MultiSelectModule
+    MultiSelectModule,
+    ChipsModule,
+    CheckboxModule
   ]
 })
 export class CategoryModulModule { }

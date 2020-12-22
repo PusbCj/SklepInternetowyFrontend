@@ -15,10 +15,38 @@
 
       <div class="divider">
         <p>Marka:</p>
-        <input type="text" class="form-control " placeholder="Szukaj" [(ngModel)]="brand">
-        <p-multiSelect [options]="listBrand" [(ngModel)]="selectedBrand" optionLabel="name" display="chip"></p-multiSelect>
+
+        <p-multiSelect [options]="listBrand" [(ngModel)]="selectedBrand"
+                       optionLabel="name" [virtualScroll]="true" itemSize="30"
+                       display="chip" placeholder="Wybierz" ></p-multiSelect>
         <p>Wiek dziecka:</p>
-        <input type="text" class="form-control" placeholder="Szukaj" [(ngModel)]="age">
+        <div>
+        <p-checkbox name="groupname" value="val1" label="0-3m" [(ngModel)]="selectedAge"></p-checkbox>
+        </div>
+        <div>
+        <p-checkbox name="groupname" value="val2" label="3-6m" [(ngModel)]="selectedAge"></p-checkbox>
+        </div>
+        <div>
+          <p-checkbox name="groupname" value="val3" label="6-12m" [(ngModel)]="selectedAge"></p-checkbox>
+        </div>
+        <div>
+          <p-checkbox name="groupname" value="val4" label="1-3" [(ngModel)]="selectedAge"></p-checkbox>
+        </div>
+        <div>
+          <p-checkbox name="groupname" value="val5" label="4-5" [(ngModel)]="selectedAge"></p-checkbox>
+        </div>
+        <div>
+          <p-checkbox name="groupname" value="val6" label="6-8" [(ngModel)]="selectedAge"></p-checkbox>
+        </div>
+        <div>
+          <p-checkbox name="groupname" value="val7" label="8-10" [(ngModel)]="selectedAge"></p-checkbox>
+        </div>
+        <div>
+          <p-checkbox name="groupname" value="val8" label="10-12" [(ngModel)]="selectedAge"></p-checkbox>
+        </div>
+        <div>
+          <p-checkbox name="groupname" value="val9" label="12+" [(ngModel)]="selectedAge"></p-checkbox>
+        </div>
       </div>
 
 
