@@ -20,6 +20,9 @@ export class ProductServiceService {
   addProduct(product: Product): Observable<any>{
     return this.http.post(SERVER_API_URL + 'api/v1/product/', product);
   }
+  updateProduct(product: Product): Observable<any>{
+    return this.http.put(SERVER_API_URL + 'api/v1/product/', product);
+  }
   getProduct(id): Observable<any>{
     return this.http.get(SERVER_API_URL + 'api/v1/product/id/' + id);
   }

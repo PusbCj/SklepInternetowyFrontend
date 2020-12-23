@@ -9,6 +9,7 @@ import {GalleriaModule} from 'primeng/galleria';
 import {EditorModule} from 'primeng/editor';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {QuillModule} from 'ngx-quill';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
     GalleriaModule,
     EditorModule,
     RadioButtonModule,
-    MultiSelectModule
+    MultiSelectModule,
+    QuillModule.forRoot()
   ]
 })
 export class AdminsModule { }

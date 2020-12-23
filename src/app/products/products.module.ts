@@ -5,6 +5,7 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
 import {FormsModule} from '@angular/forms';
 import {GalleriaModule} from 'primeng/galleria';
+import {QuillModule} from 'ngx-quill';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {GalleriaModule} from 'primeng/galleria';
     CommonModule,
     ProductsRoutingModule,
     FormsModule,
-    GalleriaModule
+    GalleriaModule,
+    QuillModule.forRoot()
   ]
 })
 export class ProductsModule { }

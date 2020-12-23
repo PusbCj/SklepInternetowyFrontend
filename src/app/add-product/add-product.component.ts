@@ -15,7 +15,7 @@ import {CartServiceService} from '../services/cart-service.service';
 export class AddProductComponent implements OnInit {
   selectedFile = null;
   pathFile = '';
-  pathFiles: Array<PhotoUrl> = new Array();
+  pathFiles: Array<PhotoUrl> = [];
   product: Product;
   categories: Array<Category>;
   idCategory = 1;
@@ -25,7 +25,7 @@ export class AddProductComponent implements OnInit {
     , private messageService: MessageService) {
     this.product = new Product();
     this.categories = new Array<Category>();
-    this.pathFiles = new Array();
+    this.pathFiles = [];
   }
 
   ngOnInit(): void {

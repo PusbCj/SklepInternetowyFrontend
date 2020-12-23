@@ -107,4 +107,13 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+
+  isAdmin(): boolean {
+    if (sessionStorage.getItem('admin')){
+      return true;
+    }else {
+      return false;
+    }
+  }
+
 }

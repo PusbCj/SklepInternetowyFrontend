@@ -20,6 +20,7 @@ import {ProductCategoryAge} from '../../models/ProductCategoryAge';
 export class EditProductComponent implements OnInit {
   quantity = 1;
   images: PhotoCaru[];
+  selectedFile = null;
   product: Product;
   prodID = '';
   productUrlBig: PhotoUrl;
@@ -109,6 +110,29 @@ export class EditProductComponent implements OnInit {
   getAgeList(): void{
     this.productService.getAllAgeCategories().subscribe( res => {
       this.listAge = res.sort((a, b) => a.id - b.id);
+    });
+  }
+
+  onFileSelected(event, x): void {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile.type.startsWith('image')) {
+      this.productService.addFile(this.selectedFile).subscribe(res => {
+        const photo = new PhotoUrl();
+        photo.url = res;
+        this.product.photoUrl[x] = photo;
+      }, error => {
+      });
+    }else{
+      this.messageService.add({severity: 'error', summary: 'bład', detail: 'Plik nie jest zdjeciem'});
+    }
+  }
+
+  updateProduct(): void {
+    this.productService.updateProduct(this.product).subscribe( res => {
+      this.messageService.add({severity: 'success', summary: 'Zaktualizowano', detail: 'Aktualizacja produktu powiodła się'});
+
+    }, error => {
+      this.messageService.add({severity: 'error', summary: 'bład', detail: 'Aktualizacja produktu nie powiodła się'});
     });
   }
 }

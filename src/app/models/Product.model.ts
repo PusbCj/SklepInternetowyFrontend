@@ -10,6 +10,7 @@ export class Product {
   description?: string;
   id?: number;
   name?: string;
+  disabled?: boolean;
   photoUrl?: Array<PhotoUrl>;
   productCategoryAgeList?: Array<ProductCategoryAge>;
   quantity?: number;
