@@ -1,19 +1,7 @@
-<div class="container" style="margin-top: 40px">
-  <div class="row">
-    <div class="col-4">
-      <button class="btn btn-success" style="border-radius: 10px" (click)="undo()"><i class="fas fa-arrow-left"></i>
-      </button>
-    </div>
 
-    <div class="col-4">
-      <span *ngIf="isAdmin()">
-  <button class="btn btn-success" style="border-radius: 10px;margin-left: 20px;"
-          routerLink='/admin/editproduct/{{prodID}}'><i class="fas fa-edit"></i>
-  Edytuj
+<div class="container" style="margin-top: 40px">
+  <button class="btn btn-success" style="border-radius: 10px" (click)="undo()"><i class="fas fa-arrow-left"></i>
   </button>
-        </span>
-    </div>
-  </div>
   <div class="row">
     <div class="col-sm-6">
       <div class="photobig">
@@ -46,9 +34,10 @@
       <div>
         <div class="row">
           <div class="col-sm-12">
-            <h3 style="padding-top: 5px">{{product.name}}</h3>
+            <h3 style="padding-top: 5px">
+              {{product?.name}}</h3>
             <h5 style="padding-top: 15px; padding-left: 10px"> &nbsp;CENA &nbsp;&nbsp;&nbsp;
-              <span style="color: green; font-size: xx-large">{{product.price}}zł <span
+              <span style="color: green; font-size: xx-large">{{product?.price|currency : 'PLN'}} <span
                 style="font-size: large">z VAT</span></span></h5>
 
             <p class="dostawa"><i class="fas fa-truck"></i> Darmowa dostawa od 200zł</p>
@@ -75,15 +64,78 @@
 
       </div>
     </div>
+    <div class="col-4 " ><div class="framedit">
 
-  </div>
+      <p>Nazwa produktu:</p>
+
+      <input style="background: none;  border: 1px solid black; border-radius: 4px; font-size: larger" type="text"
+             [(ngModel)]="product.name">
+
+      <p>Cena produktu:</p>
+
+      <input style="background: none; border: 1px solid black; border-radius: 4px; font-size: larger" type="text"
+             [(ngModel)]="product.price">
+
+      <p>Marka produktu:</p>
+
+      <input style="background: none; border: 1px solid black; border-radius: 4px; font-size: larger" type="text"
+             [(ngModel)]="product.brand">
+
+      <p>Status produktu</p>
+      <select class="form-select" aria-label="Default select example" style="width: 100%" [(ngModel)]="product.disabled">
+        <option value="false">Aktywny</option>
+        <option value="true">Nieaktywny</option>
+
+      </select>
+
+    </div></div>
+    <div class="col-4 "><div class="framedit">
+      <p>Grupy wiekowe</p>
+      <span *ngIf="product.productCategoryAgeList != null">
+      <p-multiSelect [options]="listAge" [(ngModel)]="product.productCategoryAgeList"
+                     optionLabel="name" [virtualScroll]="true" itemSize="30"
+                     display="chip" placeholder="Wybierz"></p-multiSelect>
+        </span>
+
+      <p>zdjecia</p>
+      <div class="upload-btn-wrapper">
+        <button class="btnn btn  btn-success">Wrzuć zdjecie 1</button>
+        <input type="file" class="form-control-file" accept="image/*" (change)="onFileSelected($event,0)"><br>
+      </div>
+      <br>
+      <div class="upload-btn-wrapper">
+        <button class="btnn btn  btn-success">Wrzuć zdjecie 2</button>
+        <input type="file" class="form-control-file" accept="image/*" (change)="onFileSelected($event,1)"><br>
+      </div>
+      <br>
+      <div class="upload-btn-wrapper">
+        <button class="btnn btn  btn-success">Wrzuć zdjecie 3</button>
+        <input type="file" class="form-control-file" accept="image/*" (change)="onFileSelected($event,2)"><br>
+      </div>
+
+
+    </div></div>
+    <div class="col-4" ><div class="framedit">
+      <p>Kategoria</p>
+      <ng-container *ngFor="let cat of categoryList">
+        <div>
+          <p-radioButton name="groupname" [value]="cat.id" [label]="cat.name"
+                         [(ngModel)]="product.category.id"></p-radioButton>
+        </div>
+      </ng-container>
+
+      <button type="button" class="btn btn-block btn-success" (click)="addProduct()" style="margin-top: 20px">
+        Aktualizuj Produkt
+      </button>
+    </div>
+    </div></div>
+
+
   <div class="row" style="margin-top: 40px">
     <div class="col-sm-8">
       <div class="cont" style="border-top: 1px solid #dddddd">
         <h5>Szczegóły produktu</h5>
-
-        <quill-view-html [content]="product.description"></quill-view-html>
-
+        <quill-editor [(ngModel)]="product.description"></quill-editor>
       </div>
     </div>
 

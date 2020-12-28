@@ -19,7 +19,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { ActivateComponent } from './activate/activate.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { AddProductComponent } from './add-product/add-product.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import localPl from '@angular/common/locales/pl';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
@@ -37,7 +36,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ContactComponent,
     ActivateComponent,
     ForgotPasswordComponent,
-    AddProductComponent,
     MyAccountComponent
   ],
   imports: [

@@ -1,7 +1,7 @@
 import {Product} from './Product.model';
 
 
-export interface Category {
+export class Category {
   id?: number;
   imgUrl?: string;
   name?: string;

@@ -10,10 +10,11 @@ import {EditorModule} from 'primeng/editor';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {QuillModule} from 'ngx-quill';
+import { AddproductComponent } from './addproduct/addproduct.component';
 
 
 @NgModule({
-  declarations: [AdminsComponent, EditProductComponent],
+  declarations: [AdminsComponent, EditProductComponent, AddproductComponent],
   imports: [
     CommonModule,
     AdminsRoutingModule,

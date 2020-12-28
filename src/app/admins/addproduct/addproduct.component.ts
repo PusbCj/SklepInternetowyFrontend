@@ -2,22 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import {PhotoCaru} from '../../models/PhotoCaru.models';
 import {Product} from '../../models/Product.model';
 import {PhotoUrl} from '../../models/PhotoUrl.models';
+import {Category} from '../../models/Category.model';
+import {ProductCategoryAge} from '../../models/ProductCategoryAge';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductServiceService} from '../../services/product-service.service';
 import {Location} from '@angular/common';
 import {CartServiceService} from '../../services/cart-service.service';
 import {MessageService} from 'primeng/api';
-import {ItemShopCart} from '../../models/ItemShopCar.model';
 import {CategoryService} from '../../services/category.service';
-import {Category} from '../../models/Category.model';
-import {ProductCategoryAge} from '../../models/ProductCategoryAge';
+import {newArray} from '@angular/compiler/src/util';
 
 @Component({
-  selector: 'app-edit-product',
-  templateUrl: './edit-product.component.html',
-  styleUrls: ['./edit-product.component.css']
+  selector: 'app-addproduct',
+  templateUrl: './addproduct.component.html',
+  styleUrls: ['./addproduct.component.css']
 })
-export class EditProductComponent implements OnInit {
+export class AddproductComponent implements OnInit {
   quantity = 1;
   images: PhotoCaru[];
   selectedFile = null;
@@ -56,25 +56,15 @@ export class EditProductComponent implements OnInit {
               private router: Router, private location: Location, private cartService: CartServiceService,
               private messageService: MessageService, private categoryService: CategoryService ) {
     this.product = new Product();
+    this.product.photoUrl = new Array<PhotoUrl>();
+    this.product.category = new Category();
+    this.product.productCategoryAgeList = new Array<ProductCategoryAge>();
+    this.images = new Array();
   }
 
   ngOnInit(): void {
-
-    this.prodID = this.route.snapshot.paramMap.get('id');
     this.getAllCat();
     this.getAgeList();
-    this.productService.getProduct(this.prodID).subscribe(res => {
-      this.product = res;
-      this.productUrlBig = res.photoUrl[0];
-      this.images = res.photoUrl.map(x => {
-        const phot = new PhotoCaru();
-        phot.alt = 'photo';
-        phot.tittle = 'photo';
-        phot.previewImageSrc = x.url;
-        phot.thumbnailImageSrc = x.url;
-        return phot;
-      });
-    }, res => this.router.navigate(['/pagenotfound']));
   }
   getAllCat(): void {
     this.categoryService.getAllCategory().subscribe( res => {
@@ -136,8 +126,8 @@ export class EditProductComponent implements OnInit {
     }
   }
 
-  updateProduct(): void {
-    this.productService.updateProduct(this.product).subscribe( res => {
+  addProduct(): void {
+    this.productService.addProduct(this.product).subscribe( res => {
       this.messageService.add({severity: 'success', summary: 'Zaktualizowano', detail: 'Aktualizacja produktu powiodła się'});
 
     }, error => {
