@@ -53,17 +53,18 @@
         <ng-container *ngIf="cart?.itemShopCartList?.length>0; else emptyCart">
           <ng-container *ngFor="let item of cart.itemShopCartList">
             <div class="col-sm-6 col-lg-12">
-              <div class="prod" (mouseleave)="updateIfNecessary()">
+              <div class="prod" (mouseleave)="updateIfNecessary()" >
 
                 <div class="row">
 
-                  <div class="col-lg-2 " style="margin-bottom: 5px; margin-top: 0px; padding-top: 0px;">
+
+                  <div class="col-lg-2 " style="margin-bottom: 5px; margin-top: 0px; padding-top: 0px;" routerLink="/product/{{item.product.id}}">
                     <div class="photo">
                       <div class="zdjecie"><img src="{{item.product?.photoUrl[0]?.url}}">miniatura
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 align-self-center">
+                  <div class="col-lg-3 align-self-center" routerLink="/product/{{item.product.id}}">
                     <h4>{{item.product.name}}</h4>
                   </div>
                   <div class="col-lg-2 align-self-center">
