@@ -23,6 +23,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import localPl from '@angular/common/locales/pl';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ChipsModule} from 'primeng/chips';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    ChipsModule
   ],
   providers: [MessageService,
     {      provide: LocationStrategy, useClass: PathLocationStrategy},

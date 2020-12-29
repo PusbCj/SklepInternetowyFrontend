@@ -51,5 +51,29 @@ export class CartServiceService {
       return this.http.put(SERVER_API_URL + 'api/v1/shopcart/anon/', cart);
     }
   }
+
+  addShopCartFromSessionToRegister(): Observable<any>{
+    const idCart = sessionStorage.getItem('cartid');
+    if ( idCart != null){
+      sessionStorage.removeItem('cartid');
+      return this.http.post(SERVER_API_URL + 'api/v1/shopcart/addshopcart/' + idCart, {}).pipe(
+        share(), map(res => {
+          let shopCart: ShopCart;
+          shopCart = res;
+          sessionStorage.setItem('items', String(shopCart.itemShopCartList.length));
+          return res;
+        })
+      );
+    } else{
+      return this.http.get(SERVER_API_URL + 'api/v1/shopcart/').pipe(
+        share(), map(res => {
+          let shopCart: ShopCart;
+          shopCart = res;
+          sessionStorage.setItem('items', String(shopCart.itemShopCartList.length));
+          return res;
+        })
+      );
+    }
+  }
 }
 

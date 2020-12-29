@@ -4,6 +4,7 @@ import {MessageService} from 'primeng/api';
 import {SigninService} from '../services/signin.service';
 import {UsernamePassword} from '../models/UsernamePassword.model';
 import {NgForm} from '@angular/forms';
+import {CartServiceService} from '../services/cart-service.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import {NgForm} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   status = '';
-  constructor(private router: Router, private messageService: MessageService, private signinService: SigninService) { }
+  constructor(private router: Router, private messageService: MessageService, private signinService: SigninService,
+              private cartService: CartServiceService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('user', loginForm.value.username);
         this.status = 'sukces';
         this.messageService.add({ severity: 'success', summary: 'Sukces', detail: 'Logowanie przebiegło pomyślnie'});
+        this.cartService.addShopCartFromSessionToRegister().subscribe();
         window.history.back();
         // this.router.navigate(['/start']);
       }, () => {
