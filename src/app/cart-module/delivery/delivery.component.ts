@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {OrderService} from '../../services/order.service';
+import {Order} from '../../models/Order.model';
+import {Address} from '../../models/Address.model';
 
 @Component({
   selector: 'app-delivery',
@@ -7,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeliveryComponent implements OnInit {
 
-  selectedPostMethod  = 0;
-  constructor() { }
+  order: Order = new Order();
+  selectedPostMethod = 0;
+
+
+  constructor(private orderService: OrderService) {
+    this.order.address = new Address();
+  }
 
   ngOnInit(): void {
+    this.orderService.getCurrentOrder().subscribe(res => {
+      this.order = res;
+    });
   }
 
 }

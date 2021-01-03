@@ -24,6 +24,7 @@ export class MenuComponent implements OnInit {
     sessionStorage.removeItem('admin');
     this.messageService.add({ severity: 'info', summary: 'Informacja', detail: 'Wylogowano'});
     this.router.navigate(['/']);
+    sessionStorage.removeItem('items');
   }
 
   isNotLogged(): boolean {
