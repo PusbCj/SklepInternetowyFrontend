@@ -14,7 +14,9 @@ export class ForgotPWDService {
     return this.http.post(SERVER_API_URL + 'api/v1/signup/forget/', user);
   }
 
-  changePass(pass: ChgForgotPwd): Observable<any>{
-    return this.http.post(SERVER_API_URL + 'api/v1/signup/changeassword/', pass);
+  changePass(key: string, pass: string, user: string): Observable<any>{
+    const temp = SERVER_API_URL + 'api/v1/signup/changeassword/?key=' + key + '&username=' + user;
+    console.log(temp);
+    return this.http.post(SERVER_API_URL + 'api/v1/signup/changeassword/?key=' + key + '&username=' + user, pass);
   }
 }

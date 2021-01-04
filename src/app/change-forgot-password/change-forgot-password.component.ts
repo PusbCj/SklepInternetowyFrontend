@@ -46,12 +46,10 @@ changePassword: FormGroup;
   get p() { return this.changePassword.controls; }
 
   newPass(newPass: FormGroup): void {
-    const temp = new ChgForgotPwd(this.key, newPass.value.newPassword, this.user)
-    this.forgotPWDService.changePass(new ChgForgotPwd(this.key, newPass.value.newPassword, this.user)).subscribe(res => {
+    this.forgotPWDService.changePass(this.key, newPass.value.newPassword, this.user).subscribe(res => {
       this.messageService.add({ severity: 'success', summary: 'Sukces', detail: 'Hasło zostało zmienione.'});
     }, res => {
       this.messageService.add({severity: 'error', summary: 'Blad', detail: res.error.message});
     });
-    console.log(temp);
   }
 }
