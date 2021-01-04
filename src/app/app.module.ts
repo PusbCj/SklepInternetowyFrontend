@@ -19,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { ActivateComponent } from './activate/activate.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChangeForgotPasswordComponent } from './change-forgot-password/change-forgot-password.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import localPl from '@angular/common/locales/pl';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
@@ -37,7 +38,8 @@ import {ChipsModule} from 'primeng/chips';
     ContactComponent,
     ActivateComponent,
     ForgotPasswordComponent,
-    MyAccountComponent
+    ChangeForgotPasswordComponent,
+    MyAccountComponent,
   ],
   imports: [
     BrowserModule,

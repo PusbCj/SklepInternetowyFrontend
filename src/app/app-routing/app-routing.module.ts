@@ -7,6 +7,7 @@ import {PageNotFoundComponent} from '../page-not-found/page-not-found.component'
 import {ContactComponent} from '../contact/contact.component';
 import {ActivateComponent} from '../activate/activate.component';
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component';
+import {ChangeForgotPasswordComponent} from '../change-forgot-password/change-forgot-password.component';
 import {MyAccountComponent} from '../my-account/my-account.component';
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path : 'activate', component: ActivateComponent},
   {path : 'myaccount', component: MyAccountComponent},
   {path : 'forgotPassword', component: ForgotPasswordComponent},
+  {path : 'changeforgottenpassword', component: ChangeForgotPasswordComponent},
   {path: '', redirectTo: 'start', pathMatch: 'full' },
   { path: 'admin', loadChildren: () => import('../admins/admins.module').then(m => m.AdminsModule) },
   { path: 'product', loadChildren: () => import('../products/products.module').then(m => m.ProductsModule) },
