@@ -3,7 +3,6 @@ import {MessageService} from 'primeng/api';
 import {ActivatedRoute} from '@angular/router';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {ForgotPWDService} from '../services/forgot.service';
-import {ChgForgotPwd} from '../models/ChgForgotPwd.model';
 
 @Component({
   selector: 'app-forgot-password',

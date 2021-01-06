@@ -1,16 +1,81 @@
-<div id="sidebar_container">
+<div class="container" style="margin-top: 8em; ">
 
-  <!-- insert the page content here -->
-  <h1>Skontaktuj się z nami</h1>
-  <p>Wypełnij poniższy formularz:</p>
-  <form action="" method="post">
-    <div class="form_settings">
-      <p><span>Imię i nazwisko</span><input class="contact" type="text" name="your_name" value="" /></p>
-      <p><span>Adres e-mail</span><input class="contact" type="text" name="your_email" value="" /></p>
-      <p><span>Wiadomość</span><textarea class="contact textarea" rows="8" cols="50" name="your_enquiry"></textarea></p>
-      <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="Wyślij" /></p>
-    </div>
+  <form [formGroup]="contactForm" (ngSubmit)="send(contactForm)">
+    <div class="col-xl-6 offset-xl-3 col-md-20 offset-md-2 col-sm-10 offset-sm-1">
+      <div class="zal">
+        <h1>Kontakt</h1>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div>
+              <h4>Imię i Nazwisko*</h4>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div>
+              <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': (p.name.touched || p.name.dirty) && p.name.errors }" />
+              <div *ngIf="(p.name.touched || p.name.dirty) && p.name.errors" class="invalid-feedback">
+                <div *ngIf="p.name.errors.required">To pole jest wymagane</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row"><h5> </h5></div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div>
+              <h4>e-mail*</h4>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div>
+              <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': (p.email.touched || p.email.dirty) && p.email.errors }" />
+              <div *ngIf="(p.email.touched || p.email.dirty) && p.email.errors" class="invalid-feedback">
+                <div *ngIf="p.email.errors.required">To pole jest wymagane</div>
+                <div *ngIf="p.email.errors.email">Nieprawidłowy e-mail</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row"><h5> </h5></div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div>
+              <h4>Wiadomość*</h4>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div>
+              <textarea type="text" rows="10" cols="50"  formControlName="message" class="form-control" [ngClass]="{ 'is-invalid': (p.message.touched || p.message.dirty) && p.message.errors }"></textarea>
+              <div *ngIf="(p.message.touched || p.message.dirty) && p.message.errors" class="invalid-feedback">
+                <div *ngIf="p.message.errors.required">To pole jest wymagane</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row"><h5> </h5></div>
+
+        <div class="row">
+          <div class="col-12 ">
+            <div>
+              <button *ngIf="!(p.name.errors || p.email.errors || p.message.errors); else disabled"
+                      type="submit" class=" float-right btn btn-success btn-lg btn-block pot  " >Wyślij</button>
+              <ng-template #disabled>
+                <button  type="submit" class=" float-right btn btn-success btn-lg btn-block pot  " disabled>Wyślij</button>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+  </div>
   </form>
 
-
 </div>
+<div style="height: 30px"></div>
