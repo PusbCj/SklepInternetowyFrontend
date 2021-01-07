@@ -80,19 +80,19 @@
             <h5 style="text-align: center">METODA WYSYŁKI</h5>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" [(ngModel)]="order.deliveryType" value="KI" checked>
               <label class="form-check-label" for="exampleRadios1">
                 Poczta Polska Przedpłata +10zł
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [(ngModel)]="order.deliveryType" value="PP">
               <label class="form-check-label" for="exampleRadios2">
                 Poczta Polska Pobranie +20zł
               </label>
             </div>
-            <div class="form-check disabled">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
+            <div class="form-check ">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" [(ngModel)]="order.deliveryType" value="DPU" >
               <label class="form-check-label" for="exampleRadios3">
                 Kurier Dpd Pobranie +20zł
               </label>
@@ -102,7 +102,7 @@
         </div>
 
         <div class="col-12" style="text-align: right; margin-top: 10px; padding-right: 13px">
-          <button type="button" class="btn btn-success" routerLink="./delivery">Dalej</button>
+          <button type="button" class="btn btn-success" routerLink="/cart/summary" (click)="next()">Dalej</button>
         </div>
 
 

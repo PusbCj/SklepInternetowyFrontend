@@ -19,4 +19,8 @@ export class CategoryService {
   getCategoryBrand(id: string): Observable<any>{
     return this.http.get(SERVER_API_URL + 'api/v1/product/brand/?categoryId=' + id);
   }
+
+  getBrands(): Observable<any>{
+    return this.http.get(SERVER_API_URL + 'api/v1/product/brand/');
+  }
 }

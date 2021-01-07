@@ -18,6 +18,8 @@ import {ProductCategoryAge} from '../../models/ProductCategoryAge';
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent implements OnInit {
+  brands: string[];
+  brandsSuggestion: string[];
   quantity = 1;
   images: PhotoCaru[];
   selectedFile = null;
@@ -56,6 +58,8 @@ export class EditProductComponent implements OnInit {
               private router: Router, private location: Location, private cartService: CartServiceService,
               private messageService: MessageService, private categoryService: CategoryService ) {
     this.product = new Product();
+    this.brands = [];
+    this.brandsSuggestion = [];
   }
 
   ngOnInit(): void {
@@ -75,7 +79,15 @@ export class EditProductComponent implements OnInit {
         return phot;
       });
     }, res => this.router.navigate(['/pagenotfound']));
+    this.getBrands();
   }
+
+  private getBrands(): void {
+    this.categoryService.getBrands().subscribe(res => {
+      this.brands = res;
+    });
+  }
+
   getAllCat(): void {
     this.categoryService.getAllCategory().subscribe( res => {
       this.categoryList = res;
@@ -143,5 +155,9 @@ export class EditProductComponent implements OnInit {
     }, error => {
       this.messageService.add({severity: 'error', summary: 'bład', detail: 'Aktualizacja produktu nie powiodła się'});
     });
+  }
+
+  search($event: any): void {
+    this.brandsSuggestion = this.brands.filter(x => x.startsWith($event.query));
   }
 }

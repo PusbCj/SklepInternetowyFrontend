@@ -24,4 +24,13 @@ export class DeliveryComponent implements OnInit {
     });
   }
 
+
+
+  next(): void {
+    this.orderService.updateOrder(this.order.id, this.order).subscribe( res => {
+
+    }, error => {
+
+    });
+  }
 }

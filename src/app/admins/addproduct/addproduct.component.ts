@@ -18,6 +18,8 @@ import {newArray} from '@angular/compiler/src/util';
   styleUrls: ['./addproduct.component.css']
 })
 export class AddproductComponent implements OnInit {
+  brands: string[];
+  brandsSuggestion: string[];
   quantity = 1;
   images: PhotoCaru[];
   selectedFile = null;
@@ -60,11 +62,14 @@ export class AddproductComponent implements OnInit {
     this.product.category = new Category();
     this.product.productCategoryAgeList = new Array<ProductCategoryAge>();
     this.images = new Array();
+    this.brands = [];
+    this.brandsSuggestion = [];
   }
 
   ngOnInit(): void {
     this.getAllCat();
     this.getAgeList();
+    this.getBrands();
   }
   getAllCat(): void {
     this.categoryService.getAllCategory().subscribe( res => {
@@ -76,6 +81,12 @@ export class AddproductComponent implements OnInit {
     this.productUrlBig = this.product.photoUrl[id];
     this.activeIndex = id;
     this.activeId = id;
+  }
+
+  private getBrands(): void {
+    this.categoryService.getBrands().subscribe(res => {
+      this.brands = res;
+    });
   }
 
   undo(): void {
@@ -133,5 +144,9 @@ export class AddproductComponent implements OnInit {
     }, error => {
       this.messageService.add({severity: 'error', summary: 'bład', detail: 'Aktualizacja produktu nie powiodła się'});
     });
+  }
+
+  search($event: any): void {
+    this.brandsSuggestion = this.brands.filter(x => x.startsWith($event.query));
   }
 }

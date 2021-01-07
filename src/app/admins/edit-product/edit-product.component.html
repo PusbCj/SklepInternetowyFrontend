@@ -78,8 +78,9 @@
 
       <p>Marka produktu:</p>
 
-      <input style="background: none; border: 1px solid black; border-radius: 4px; font-size: larger" type="text"
-             [(ngModel)]="product.brand">
+      <p-autoComplete inputId="autocomplete" [(ngModel)]="product.brand"
+                      [suggestions]="brandsSuggestion" (completeMethod)="search($event)" ></p-autoComplete>
+
 
       <p>Status produktu</p>
       <select class="form-select" aria-label="Default select example" style="width: 100%" [(ngModel)]="product.disabled">

@@ -5,15 +5,18 @@ import { CartModuleRoutingModule } from './cart-module-routing.module';
 import { CartModuleComponent } from './cart-module.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import {FormsModule} from '@angular/forms';
+import {ChipsModule} from 'primeng/chips';
+import { SummaryComponent } from './summary/summary.component';
 
 
 
 @NgModule({
-  declarations: [CartModuleComponent, DeliveryComponent],
+  declarations: [CartModuleComponent, DeliveryComponent, SummaryComponent],
   imports: [
     CommonModule,
     CartModuleRoutingModule,
-    FormsModule
+    FormsModule,
+    ChipsModule
   ]
 })
 export class CartModuleModule { }
