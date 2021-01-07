@@ -34,7 +34,6 @@ export class SummaryComponent implements OnInit {
 
   delivery(): number {
     if (this.order.shopCart != null) {
-      console.log(this.order.deliveryType);
       if (this.order.deliveryType === Order.DeliveryTypeEnum.KI) {
         return 10;
       } else if (this.order.deliveryType === Order.DeliveryTypeEnum.DPU) {
