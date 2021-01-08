@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CartModuleRoutingModule } from './cart-module-routing.module';
 import { CartModuleComponent } from './cart-module.component';
 import { DeliveryComponent } from './delivery/delivery.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChipsModule} from 'primeng/chips';
 import { SummaryComponent } from './summary/summary.component';
 
@@ -16,7 +16,8 @@ import { SummaryComponent } from './summary/summary.component';
     CommonModule,
     CartModuleRoutingModule,
     FormsModule,
-    ChipsModule
+    ChipsModule,
+    ReactiveFormsModule
   ]
 })
 export class CartModuleModule { }
