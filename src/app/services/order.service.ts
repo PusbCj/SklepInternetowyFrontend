@@ -37,14 +37,22 @@ export class OrderService {
     }
   }
 
-  finaliseOrder(id: number): Observable<any>{
+  finaliseOrder(id: number): Observable<any> {
     if (sessionStorage.getItem('user') != null) {
       return this.http.get(SERVER_API_URL + 'api/v1/order/finalise/' + id);
-    } else{
+    } else {
       return this.http.get(SERVER_API_URL + 'api/v1/order/notlogged/finalise/' + id)
-        .pipe(share(), map( res => {
+        .pipe(share(), map(res => {
           return res;
         }));
     }
+  }
+
+  getAllOrderByUser(): Observable<any> {
+    return this.http.get(SERVER_API_URL + 'api/v1/order/?sort=id,desc');
+  }
+
+  getAllOrderAdmin(): Observable<any> {
+    return this.http.get(SERVER_API_URL + 'api/v1/order/admin/');
   }
 }

@@ -25,6 +25,7 @@ import localPl from '@angular/common/locales/pl';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ChipsModule} from 'primeng/chips';
+import {OrdersComponent} from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {ChipsModule} from 'primeng/chips';
     ForgotPasswordComponent,
     ChangeForgotPasswordComponent,
     MyAccountComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

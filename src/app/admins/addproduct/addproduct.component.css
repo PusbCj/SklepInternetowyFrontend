@@ -87,6 +87,7 @@ input{
   border: 0;
   border-bottom: 1px solid black;
   text-align: center;
+
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

@@ -54,24 +54,29 @@
 
             <h5 style="text-align: center">ADRES DO WYSYŁKI </h5>
             <div class="row">
-              <h5 class="col-2 offset-3">Imię Nazwisko</h5>
-              <input value={{order.address.name}} name="name" formControlName="name"  type="text"  class="form-control col-4 " placeholder="" />
+              <h5 class="col-3 offset-2 align-items-end">Imię Nazwisko</h5>
+              <input [(ngModel)]="order.address.name" class="form-control col-4 " formControlName="name" name="name"
+                     placeholder="" type="text"/>
             </div>
             <div class="row">
-              <h5 class="col-2 offset-3">Ulica</h5>
-              <input value={{order.address.street}} name="street" formControlName="street" type="text"  class="form-control col-4 " placeholder=""/>
+              <h5 class="col-3 offset-2 align-items-end">Ulica</h5>
+              <input [(ngModel)]="order.address.street" class="form-control col-4 " formControlName="street"
+                     name="street" placeholder="" type="text"/>
             </div>
             <div class="row">
-              <h5 class="col-2 offset-3">Nr domu</h5>
-              <input value={{order.address.houseNumber}} name="houseNumber" formControlName="houseNumber" type="text"  class="form-control col-4 " placeholder=""/>
+              <h5 class="col-3 offset-2 align-items-end">Nr domu</h5>
+              <input [(ngModel)]="order.address.houseNumber" class="form-control col-4 " formControlName="houseNumber"
+                     name="houseNumber" placeholder="" type="text"/>
             </div>
             <div class="row">
-              <h5 class="col-2 offset-3">Miasto</h5>
-              <input value={{order.address.city}} name="city" formControlName="city" type="text"  class="form-control col-4 " placeholder=""/>
+              <h5 class="col-3 offset-2 align-items-end">Miasto</h5>
+              <input [(ngModel)]="order.address.city" class="form-control col-4 " formControlName="city" name="city"
+                     placeholder="" type="text"/>
             </div>
             <div class="row">
-              <h5 class="col-2 offset-3">Kod pocztowy</h5>
-              <input value={{order.address.postCode}} name="postCode" formControlName="postCode" type="text"  class="form-control col-4 " placeholder=""/>
+              <h5 class="col-3 offset-2 align-items-end">Kod pocztowy</h5>
+              <input [(ngModel)]="order.address.postCode" class="form-control col-4 " formControlName="postCode"
+                     name="postCode" placeholder="" type="text"/>
             </div>
           </form>
         </div>
@@ -92,7 +97,8 @@
               </label>
             </div>
             <div class="form-check ">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" [(ngModel)]="order.deliveryType" value="DPU" >
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"
+                     [(ngModel)]="order.deliveryType" value="DPU">
               <label class="form-check-label" for="exampleRadios3">
                 Kurier Dpd Pobranie +20zł
               </label>
@@ -101,17 +107,23 @@
           </div>
         </div>
 
-        <div class="col-12" style="text-align: right; margin-top: 10px; padding-right: 13px">
-          <button *ngIf="(!(p.name.errors || p.street.errors || p.houseNumber.errors || p.city.errors || p.postCode.errors) ||
+        <div class=" col-6" style="text-align: left; margin-top: 10px; padding-left: 13px; margin-bottom: 10px">
+          <button (click)="undo()" class="btn btn-success"><i class="fas fa-arrow-left"></i></button>
+        </div>
+        <div class="col-6" style="text-align: right; margin-top: 10px; padding-right: 13px">
+          <button (click)="next()" *ngIf="(!(p.name.errors || p.street.errors || p.houseNumber.errors || p.city.errors || p.postCode.errors) ||
           (order.address.name != null || order.address.street != null || order.address.houseNumber != null ||
           order.address.city != null || order.address.postCode != null)) && order.deliveryType;
-          else disabled" type="button" class="btn btn-success" routerLink="/cart/summary" (click)="next()">Dalej</button>
+          else disabled" class="btn btn-success" type="button">Dalej
+          </button>
           <ng-template #disabled>
-            <button  type="submit" class="btn btn-success" disabled>Dalej</button>
+            <button type="submit" class="btn btn-success" disabled>Dalej</button>
           </ng-template>
           <div *ngIf="!(!(p.name.errors || p.street.errors || p.houseNumber.errors || p.city.errors || p.postCode.errors) ||
           (order.address.name != null || order.address.street != null || order.address.houseNumber != null ||
-          order.address.city != null || order.address.postCode != null)) && order.deliveryType;">Wszystkie pola są wymagane</div>
+          order.address.city != null || order.address.postCode != null)) && order.deliveryType;">Wszystkie pola są
+            wymagane
+          </div>
         </div>
       </div>
 

@@ -1,0 +1,75 @@
+<div class="container">
+  <h1 style="text-align: center; margin-top: 10px; margin-bottom: 10px">Twoje Zamówienia</h1>
+  <div class="row" style="padding-top: 20px">
+    <div class="col-sm-3">
+      <button class="btn btn-custom2 btn-lg btn-block" routerLink='/myaccount' type="button">Twoje dane <i
+        class="fas fa-user-cog"></i></button>
+      <button class="btn btn-custom btn-lg btn-block" type="button">Zamówienia <i class="fas fa-shopping-cart"></i>
+      </button>
+    </div>
+
+    <div class="col-sm-9" style="margin-bottom: 10px">
+      <div class="row">
+
+        <div *ngFor="let order of orderList; index as i" class="col-12" style="margin-bottom: 40px">
+          <div class="produ">
+            <div class="row">
+              <div class="col-4">
+                <p style="padding-left: 5px"> Zamówienie nr: {{order.id}}</p>
+              </div>
+              <div class="col-4">
+                <p style="font-size: large; font-weight: bold">{{order.createDate| date }}</p>
+              </div>
+              <div class="col-4" style="text-align: right; padding-right: 25px">
+                <p style="font-size: small">{{giveStatus(order.orderStatus)}}</p>
+              </div>
+              <div *ngFor="let item of order.shopCart.itemShopCartList" class="col-12">
+                <div class="row obr" routerLink='/product/{{item.product.id}}'>
+                  <div class="col-2">
+                    <div class="photo">
+                      <div><img class=" img-fluid " src="{{item?.product.photoUrl[1]?.url}}"></div>
+                    </div>
+                  </div>
+                  <div class="col-6 align-self-center">
+                    {{item?.product.name}}
+                  </div>
+                  <div class="col-2 align-self-center">
+                    {{item?.quantity}} X {{item?.product.price|currency:"PLN"}}
+                  </div>
+                  <div class="col-2 align-self-center">
+                    {{item?.quantity * item?.product.price |currency:"PLN"}}
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+            <div class="row">
+              <div class="col-12" style=" padding: 20px">
+                <div style="border-top: 1px solid black;">
+                  <div class="row">
+                    <div class="col-3">
+                      <p class="text-success detail">SZCZEGÓLY</p>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-6 align-self-end" style="text-align: right; padding-right: 25px">
+                      RAZEM Z DOSTAWĄ  {{totalOrder(order)|currency:"PLN"}}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

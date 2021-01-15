@@ -3,6 +3,7 @@ import {Order} from '../../models/Order.model';
 import {OrderService} from '../../services/order.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-summary',
@@ -13,7 +14,7 @@ export class SummaryComponent implements OnInit {
 
   order: Order = new Order();
 
-  constructor(private orderService: OrderService, private messageService: MessageService, private router: Router) {
+  constructor(private location: Location, private orderService: OrderService, private messageService: MessageService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -51,6 +52,7 @@ export class SummaryComponent implements OnInit {
   finalise(): void {
     this.orderService.finaliseOrder(this.order.id).subscribe(resp => {
       this.messageService.add({severity: 'success', summary: 'Sukces', detail: 'Zamówienie złożone'});
+      this.messageService.add({severity: 'success', summary: 'Sukces', detail: 'Mail z potwierdzeniem wysłany'});
       sessionStorage.removeItem('items');
       sessionStorage.removeItem('cartid');
       sessionStorage.removeItem('orderid');
@@ -58,5 +60,20 @@ export class SummaryComponent implements OnInit {
     }, error => {
       this.messageService.add({severity: 'error', summary: 'Blad', detail: 'Wystapił błąd przy skladaniu zamówienia'});
     });
+  }
+
+  giveDeliveryName(deliveryType: 'DPU' | 'KI' | 'PP'): string {
+    if (deliveryType === 'DPU') {
+      return 'Kurier DPD Pobranie';
+    } else if (deliveryType === 'KI') {
+      return 'Poczta Polska Przedpłata';
+    } else if (deliveryType === 'PP') {
+      return 'Poczta Polska Pobranie';
+    }
+
+  }
+
+  undo(): void {
+    this.location.back();
   }
 }

@@ -120,12 +120,21 @@ input::-webkit-inner-spin-button {
 }
 
 
-.btnico{
+.btnico {
   margin: 0;
   padding: 0;
 
 }
 
-.pod{
+.pod {
   background: white;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  background: none;
+}
+
+h5 {
+  margin-top: 7px;
 }

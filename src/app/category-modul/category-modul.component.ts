@@ -108,6 +108,8 @@ export class CategoryModulComponent implements OnInit {
     this.rangeValues = [];
     this.rangeValues[0] = 0;
     this.rangeValues[1] = 500;
+    this.selectedAge = [];
+    this.selectedBrand = [];
   }
 
   changeSelect(): void {

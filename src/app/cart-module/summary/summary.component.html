@@ -98,24 +98,35 @@
 
 
         </div>
-
-        <div class="col-9" style="text-align: right">
+        <div class="col-6">
+          <div class="shipment">
+            <h6 style="font-weight: bolder"><i class="fas fa-house-user"></i> Dane Wysyłki</h6>
+            <h5>{{order.address.name}}</h5>
+            <h5>{{order.address.street}} {{order.address.houseNumber}}</h5>
+            <h5>{{order.address.postCode}} {{order.address.city}} </h5>
+            <h6 style="font-weight: bolder"><i class="fas fa-shipping-fast"></i> Metoda Wysyłki</h6>
+            <h5>{{giveDeliveryName(order.deliveryType)}}</h5>
+          </div>
+        </div>
+        <div class="col-3" style="text-align: right">
           <h6 style="font-weight: bolder"><i class="fas fa-shopping-cart"></i> Kwota zamówienia:</h6>
-          <h6 style="font-weight: normal"><i class="fas fa-truck-loading"></i> Koszt wysyłki</h6>
-          <h3>Razem</h3>
+          <h6 style="font-weight: normal;"><i class="fas fa-truck-loading"></i> Koszt wysyłki</h6>
+          <h3 style="margin-top: 20px">Razem</h3>
 
 
         </div>
         <div class="col-3" style="text-align: right; ">
           <div style="margin-right: 15px">
             <h6 style="font-weight: bolder">{{sumeCart()|currency:"PLN"}}</h6>
-            <h6 style="font-weight: normal">{{delivery()|currency:"PLN"}}</h6>
-            <h3>{{sumeCart() + delivery()|currency:"PLN"}}</h3>
+            <h6 style="font-weight: normal; ">{{delivery()|currency:"PLN"}}</h6>
+            <h3 style="margin-top: 20px">{{sumeCart() + delivery()|currency:"PLN"}}</h3>
           </div>
         </div>
 
-
-        <div class="col-12" style="text-align: right; margin-top: 10px; padding-right: 13px; margin-bottom: 10px">
+        <div class=" col-6" style="text-align: left; margin-top: 10px; padding-left: 13px; margin-bottom: 10px">
+          <button (click)="undo()" class="btn btn-success"><i class="fas fa-arrow-left"></i></button>
+        </div>
+        <div class="col-6" style="text-align: right; margin-top: 10px; padding-right: 13px; margin-bottom: 10px">
           <button (click)="finalise()" class="btn btn-success" type="button">Potwierdz</button>
         </div>
 

@@ -84,7 +84,7 @@ export class EditProductComponent implements OnInit {
 
   private getBrands(): void {
     this.categoryService.getBrands().subscribe(res => {
-      this.brands = res;
+      this.brands = res.filter(x => x != null);
     });
   }
 

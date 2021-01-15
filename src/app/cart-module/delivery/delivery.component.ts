@@ -3,6 +3,8 @@ import {OrderService} from '../../services/order.service';
 import {Order} from '../../models/Order.model';
 import {Address} from '../../models/Address.model';
 import {FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-delivery',
@@ -16,7 +18,7 @@ export class DeliveryComponent implements OnInit {
   selectedPostMethod = 0;
 
 
-  constructor(private orderService: OrderService, private formBuilder: FormBuilder) {
+  constructor(private location: Location, private orderService: OrderService, private formBuilder: FormBuilder, private router: Router) {
     this.order.address = new Address();
   }
 
@@ -39,13 +41,19 @@ export class DeliveryComponent implements OnInit {
     });
   }
 
-  get p() { return this.order1.controls; }
+  get p() {
+    return this.order1.controls;
+  }
 
   next(): void {
-    this.orderService.updateOrder(this.order.id, this.order).subscribe( res => {
-
+    this.orderService.updateOrder(this.order.id, this.order).subscribe(res => {
+      this.router.navigateByUrl('/cart/summary');
     }, error => {
 
     });
+  }
+
+  undo(): void {
+    this.location.back();
   }
 }

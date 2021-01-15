@@ -132,3 +132,21 @@ input::-webkit-inner-spin-button {
 .pod {
   background: white;
 }
+
+.shipment {
+  padding-left: 20px;
+
+
+}
+
+.shipment h4 {
+
+  font-size: large;
+}
+
+.shipment h5 {
+  font-size: small;
+  font-weight: normal;
+  font-family: Verdana;
+  padding-left: 25px;
+}

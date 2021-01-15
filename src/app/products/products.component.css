@@ -100,3 +100,9 @@ input::-webkit-inner-spin-button {
   box-shadow: none !important;
 }
 
+.deli h6 {
+  padding-left: 23px;
+  letter-spacing: 1px;
+  font-family: Verdana;
+  font-weight: normal;
+}
